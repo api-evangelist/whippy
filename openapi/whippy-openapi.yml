@@ -1,0 +1,1464 @@
+openapi: 3.0.1
+info:
+  title: Whippy Public API
+  description: >-
+    The Whippy Public API is a RESTful API for the Whippy AI customer
+    communication platform. It uses standard HTTP methods and JSON request /
+    response bodies and is authenticated with an API key supplied in the
+    X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API
+    covers messaging (SMS / MMS, email, fax), contacts, conversations and
+    messages, campaigns, automated sequences, channels, and webhook / custom
+    events.
+  termsOfService: https://www.whippy.ai/terms-of-service
+  contact:
+    name: Whippy Support
+    url: https://docs.whippy.ai
+  version: '1.0'
+servers:
+  - url: https://api.whippy.co/v1
+    description: Whippy Public API v1
+security:
+  - WhippyApiKey: []
+tags:
+  - name: Messaging
+    description: Send SMS / MMS, email, and fax messages.
+  - name: Contacts
+    description: Manage contacts and communication preferences.
+  - name: Conversations
+    description: List, search, and update conversations and their messages.
+  - name: Campaigns
+    description: Send campaigns and inspect campaign analytics.
+  - name: Sequences
+    description: Manage automated multi-step sequences and their contacts.
+  - name: Channels
+    description: List and inspect channels and channel membership.
+  - name: Webhooks
+    description: Push first-party custom events into Whippy.
+paths:
+  /messaging/sms:
+    post:
+      operationId: sendSms
+      tags:
+        - Messaging
+      summary: Send an SMS / MMS
+      description: >-
+        Send a text (or MMS, via attachments) message from an existing
+        organization channel to a destination phone number. Either body or
+        attachments must be provided.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendSmsRequest'
+      responses:
+        '201':
+          description: Message queued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendMessageResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /messaging/email:
+    post:
+      operationId: sendEmail
+      tags:
+        - Messaging
+      summary: Send an email
+      description: >-
+        Send an email from an existing organization channel to a destination
+        email address with optional subject, CC / BCC, reply-to, and
+        attachments. Either body or attachments must be provided.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailRequest'
+      responses:
+        '201':
+          description: Email queued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendMessageResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /messaging/fax:
+    post:
+      operationId: sendFax
+      tags:
+        - Messaging
+      summary: Send a fax
+      description: Send a fax from an existing fax channel to a destination number.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendFaxRequest'
+      responses:
+        '201':
+          description: Fax queued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendMessageResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /messaging/sms/campaign:
+    post:
+      operationId: sendCampaign
+      tags:
+        - Messaging
+        - Campaigns
+      summary: Send an SMS campaign
+      description: >-
+        Create and send a bulk SMS campaign from a channel to a list of
+        contacts.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendCampaignRequest'
+      responses:
+        '202':
+          description: Campaign accepted for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /contacts:
+    get:
+      operationId: getContacts
+      tags:
+        - Contacts
+      summary: List contacts
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of contacts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createContact
+      tags:
+        - Contacts
+      summary: Create a contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateContactRequest'
+      responses:
+        '201':
+          description: Contact created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /contacts/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getContact
+      tags:
+        - Contacts
+      summary: Show a contact
+      responses:
+        '200':
+          description: A single contact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    put:
+      operationId: updateContact
+      tags:
+        - Contacts
+      summary: Update a contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateContactRequest'
+      responses:
+        '200':
+          description: Contact updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+    delete:
+      operationId: deleteContact
+      tags:
+        - Contacts
+      summary: Delete a contact
+      responses:
+        '200':
+          description: Contact deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /contacts/search:
+    post:
+      operationId: searchContacts
+      tags:
+        - Contacts
+      summary: Search contacts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                email:
+                  type: string
+                name:
+                  type: string
+                external_id:
+                  type: string
+                limit:
+                  type: integer
+                offset:
+                  type: integer
+      responses:
+        '200':
+          description: Matching contacts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /contacts/upsert:
+    put:
+      operationId: upsertContacts
+      tags:
+        - Contacts
+      summary: Upsert contacts
+      description: Create or update contacts keyed on phone / email / external_id.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - contacts
+              properties:
+                contacts:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CreateContactRequest'
+      responses:
+        '202':
+          description: Upsert accepted for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /contacts/{id}/communication_preferences:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getContactCommunicationPreferences
+      tags:
+        - Contacts
+      summary: List a contact's communication preferences
+      responses:
+        '200':
+          description: Communication preferences
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CommunicationPreference'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /contacts/{id}/communication_preferences/opt_in:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    post:
+      operationId: optInCommunicationPreference
+      tags:
+        - Contacts
+      summary: Opt a contact into a channel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptPreferenceRequest'
+      responses:
+        '200':
+          description: Opted in
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /contacts/{id}/communication_preferences/opt_out:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    post:
+      operationId: optOutCommunicationPreference
+      tags:
+        - Contacts
+      summary: Opt a contact out of a channel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptPreferenceRequest'
+      responses:
+        '200':
+          description: Opted out
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /conversations:
+    get:
+      operationId: getConversations
+      tags:
+        - Conversations
+      summary: List conversations
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+        - name: status[]
+          in: query
+          description: Filter by conversation status.
+          schema:
+            type: array
+            items:
+              type: string
+              enum: [open, closed, spam, automated]
+        - name: type[]
+          in: query
+          description: Filter by conversation type.
+          schema:
+            type: array
+            items:
+              type: string
+              enum: [phone, email, fax]
+      responses:
+        '200':
+          description: A page of conversations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /conversations/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getConversation
+      tags:
+        - Conversations
+      summary: Show a conversation
+      responses:
+        '200':
+          description: A single conversation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    put:
+      operationId: updateConversation
+      tags:
+        - Conversations
+      summary: Update a conversation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [open, closed, spam, automated]
+                assigned_user_id:
+                  type: integer
+                assigned_team_id:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: Conversation updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /conversations/search:
+    post:
+      operationId: searchConversations
+      tags:
+        - Conversations
+      summary: Search conversations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                limit:
+                  type: integer
+                offset:
+                  type: integer
+      responses:
+        '200':
+          description: Matching conversations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /conversations/{id}/messages:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: listMessages
+      tags:
+        - Conversations
+      summary: List messages in a conversation
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of messages
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Message'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /campaigns:
+    get:
+      operationId: getCampaigns
+      tags:
+        - Campaigns
+      summary: List campaigns
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+        - name: title
+          in: query
+          description: Filter by campaign title.
+          schema:
+            type: string
+        - name: status[]
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: A page of campaigns
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /campaigns/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getCampaign
+      tags:
+        - Campaigns
+      summary: Show a campaign
+      responses:
+        '200':
+          description: A single campaign
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Campaign'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /campaigns/{id}/contacts:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getCampaignContacts
+      tags:
+        - Campaigns
+      summary: List campaign contacts
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of campaign contacts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sequences:
+    get:
+      operationId: getSequences
+      tags:
+        - Sequences
+      summary: List sequences
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of sequences
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SequenceList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sequences/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getSequence
+      tags:
+        - Sequences
+      summary: Show a sequence
+      responses:
+        '200':
+          description: A single sequence
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Sequence'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sequences/{id}/contacts:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getSequenceContacts
+      tags:
+        - Sequences
+      summary: List sequence contacts
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of sequence contacts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSequenceContacts
+      tags:
+        - Sequences
+      summary: Add contacts to a sequence
+      description: Add 1-4000 contacts to a sequence, optionally at a specific step.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSequenceContactsRequest'
+      responses:
+        '202':
+          description: Sequence contacts accepted for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+    delete:
+      operationId: removeSequenceContacts
+      tags:
+        - Sequences
+      summary: Remove contacts from a sequence
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - contacts
+              properties:
+                contacts:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      phone:
+                        type: string
+      responses:
+        '202':
+          description: Removal accepted for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sequences/runs:
+    get:
+      operationId: getSequenceRuns
+      tags:
+        - Sequences
+      summary: List sequence runs
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of sequence runs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SequenceRun'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /channels:
+    get:
+      operationId: getChannels
+      tags:
+        - Channels
+      summary: List channels
+      responses:
+        '200':
+          description: A list of channels
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChannelList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /channels/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getChannel
+      tags:
+        - Channels
+      summary: Show a channel
+      responses:
+        '200':
+          description: A single channel
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Channel'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /channels/{id}/users:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getChannelUsers
+      tags:
+        - Channels
+      summary: List channel users
+      responses:
+        '200':
+          description: Users with access to the channel
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /custom_events:
+    post:
+      operationId: createCustomEvent
+      tags:
+        - Webhooks
+      summary: Create a custom event
+      description: >-
+        Push a first-party custom event into Whippy, optionally associated to
+        a campaign, contact, conversation, message, or sequence resource.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomEventRequest'
+      responses:
+        '201':
+          description: Event created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomEventResponse'
+        '202':
+          description: Event queued for async processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /custom_events/bulk:
+    post:
+      operationId: createBulkCustomEvents
+      tags:
+        - Webhooks
+      summary: Create custom events in bulk
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - events
+              properties:
+                events:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CustomEventRequest'
+      responses:
+        '202':
+          description: Events queued for async processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+components:
+  securitySchemes:
+    WhippyApiKey:
+      type: apiKey
+      in: header
+      name: X-WHIPPY-KEY
+      description: >-
+        Organization API key. Generated in the Whippy app under Settings >
+        Developers. OAuth 2.0 bearer tokens are also accepted via the
+        Authorization header.
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: Number of results per page (default 50, max 500).
+      schema:
+        type: integer
+        default: 50
+        maximum: 500
+    Offset:
+      name: offset
+      in: query
+      description: Number of results to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    PathId:
+      name: id
+      in: path
+      required: true
+      description: Resource UUID.
+      schema:
+        type: string
+        format: uuid
+  responses:
+    Unauthorized:
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
+    AcceptedResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+    OptInChannel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        phone:
+          type: string
+    Address:
+      type: object
+      properties:
+        address_line_one:
+          type: string
+        address_line_two:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postal_code:
+          type: string
+    BirthDate:
+      type: object
+      properties:
+        day:
+          type: integer
+        month:
+          type: integer
+        year:
+          type: integer
+    SendSmsRequest:
+      type: object
+      required:
+        - to
+        - from
+      properties:
+        to:
+          type: string
+          description: Destination phone number.
+        from:
+          type: string
+          description: Phone of an existing channel belonging to your organization.
+        body:
+          type: string
+          description: Message content (max 1000 characters). Required if attachments is empty.
+          maxLength: 1000
+        attachments:
+          type: array
+          items:
+            type: string
+          description: List of attachment URLs.
+        opt_in_to_all_channels:
+          type: boolean
+        opt_in_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptInChannel'
+        conversation_status:
+          type: string
+          enum: [automated, open, closed]
+        schedule_at:
+          type: string
+          format: date-time
+    SendEmailRequest:
+      type: object
+      required:
+        - to
+        - from
+      properties:
+        to:
+          type: string
+        from:
+          type: string
+        subject:
+          type: string
+        body:
+          type: string
+          description: Plain text or HTML body. Required if attachments is empty.
+        attachments:
+          type: array
+          items:
+            type: string
+        cc:
+          type: array
+          items:
+            type: string
+        bcc:
+          type: array
+          items:
+            type: string
+        reply_to:
+          type: string
+        sender_name:
+          type: string
+        sender_email:
+          type: string
+        schedule_at:
+          type: string
+          format: date-time
+        conversation_status:
+          type: string
+          enum: [automated, open]
+          default: open
+        opt_in_to_all_channels:
+          type: boolean
+        opt_in_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptInChannel'
+    SendFaxRequest:
+      type: object
+      required:
+        - to
+        - from
+        - attachments
+      properties:
+        to:
+          type: string
+        from:
+          type: string
+        attachments:
+          type: array
+          items:
+            type: string
+        schedule_at:
+          type: string
+          format: date-time
+    SendCampaignRequest:
+      type: object
+      required:
+        - from
+        - body
+        - contacts
+      properties:
+        from:
+          type: string
+          description: Phone of an existing channel.
+        title:
+          type: string
+        body:
+          type: string
+        attachments:
+          type: array
+          items:
+            type: string
+        schedule_at:
+          type: string
+          format: date-time
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateContactRequest'
+    SendMessageResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            contact_id:
+              type: string
+              format: uuid
+            conversation_id:
+              type: string
+              format: uuid
+            delivery_status:
+              type: string
+              example: queued
+    CreateContactRequest:
+      type: object
+      required:
+        - phone
+      properties:
+        phone:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        external_id:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        birth_date:
+          $ref: '#/components/schemas/BirthDate'
+        language:
+          type: string
+        default_channel_id:
+          type: string
+          format: uuid
+        properties:
+          type: object
+          additionalProperties: true
+        opt_in_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptInChannel'
+        opt_in_to_all_channels:
+          type: boolean
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        phone:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        external_id:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        birth_date:
+          $ref: '#/components/schemas/BirthDate'
+        state:
+          type: string
+          enum: [open, archived, blocked]
+        blocked:
+          type: boolean
+        communication_preferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommunicationPreference'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    ContactResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Contact'
+    ContactList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        total:
+          type: integer
+    CommunicationPreference:
+      type: object
+      properties:
+        channel_id:
+          type: string
+          format: uuid
+        opt_in:
+          type: boolean
+        updated_at:
+          type: string
+          format: date-time
+    OptPreferenceRequest:
+      type: object
+      properties:
+        channel_id:
+          type: string
+          format: uuid
+        phone:
+          type: string
+    Conversation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        assigned_team_id:
+          type: string
+          format: uuid
+        assigned_user_id:
+          type: integer
+        channel_id:
+          type: string
+          format: uuid
+        channel_type:
+          type: string
+          enum: [phone, email, fax]
+        contact_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [open, closed, automated, spam]
+        unread_count:
+          type: integer
+        last_message_date:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    ConversationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Conversation'
+    ConversationList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Conversation'
+        total:
+          type: integer
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        conversation_id:
+          type: string
+          format: uuid
+        body:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        direction:
+          type: string
+          enum: [INBOUND, OUTBOUND]
+        delivery_status:
+          type: string
+        attachments:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+    Campaign:
+      type: object
+      properties:
+        campaign_id:
+          type: string
+          format: uuid
+        campaign_title:
+          type: string
+        sent_messages:
+          type: integer
+        slated_messages:
+          type: integer
+        failed_deliveries:
+          type: integer
+        responses:
+          type: integer
+        link_clicks:
+          type: integer
+        unsubscribes:
+          type: integer
+    CampaignList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Campaign'
+        total:
+          type: integer
+    Sequence:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        channel_id:
+          type: string
+          format: uuid
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/SequenceStep'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    SequenceStep:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+        body:
+          type: string
+        delay:
+          type: integer
+    SequenceList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sequence'
+        total:
+          type: integer
+    SequenceRun:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        sequence_id:
+          type: string
+          format: uuid
+        contact_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    CreateSequenceContactsRequest:
+      type: object
+      required:
+        - to
+      properties:
+        to:
+          type: array
+          minItems: 1
+          maxItems: 4000
+          items:
+            $ref: '#/components/schemas/CreateContactRequest'
+        from:
+          type: string
+          description: Phone / email of an existing channel (must match step type).
+        step_id:
+          type: string
+          format: uuid
+          description: Sequence step UUID (defaults to the first step).
+        schedule_at:
+          type: string
+          format: date-time
+        custom_data:
+          type: object
+          properties:
+            custom_object_id:
+              type: string
+              format: uuid
+            resource:
+              type: object
+              additionalProperties: true
+        voice_options:
+          type: object
+          properties:
+            default_call_flow_id:
+              type: string
+              format: uuid
+            step_overrides:
+              type: object
+              additionalProperties: true
+    Channel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        address:
+          type: string
+        phone:
+          type: string
+        timezone:
+          type: string
+        color:
+          type: string
+        emoji:
+          type: string
+        is_hosted_sms:
+          type: boolean
+        support_ai_agent:
+          type: boolean
+        ai_context:
+          type: string
+        automatic_response_open:
+          type: string
+        automatic_response_closed:
+          type: string
+        opening_hours:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpeningHour'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    OpeningHour:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        weekday:
+          type: string
+          enum: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        opens_at:
+          type: string
+        closes_at:
+          type: string
+        state:
+          type: string
+    ChannelList:
+      type: object
+      properties:
+        organization_id:
+          type: string
+          format: uuid
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+    CustomEventRequest:
+      type: object
+      required:
+        - event
+      properties:
+        event:
+          type: string
+        external_id:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        payload:
+          type: object
+          additionalProperties: true
+        associated_resources:
+          type: array
+          items:
+            type: object
+            properties:
+              resource:
+                type: string
+                enum: [campaign, contact, conversation, message, sequence]
+              id:
+                type: string
+                format: uuid
+    CustomEventResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            event:
+              type: string
+            created_at:
+              type: string
+              format: date-time

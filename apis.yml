@@ -1,0 +1,183 @@
+aid: whippy
+url: https://raw.githubusercontent.com/api-evangelist/whippy/refs/heads/main/apis.yml
+name: Whippy
+kind: company
+description: Whippy is an AI-powered customer communication platform unifying SMS,
+  email, voice, and fax into a single omnichannel inbox. Its public REST API (X-WHIPPY-KEY
+  header) lets developers send messages, manage contacts and conversations, run
+  campaigns and automated sequences, configure channels, and subscribe to webhooks.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Communication
+- Messaging
+- SMS
+- Email
+- Voice
+- AI
+- Campaigns
+- Sequences
+created: '2026-06-20'
+modified: '2026-06-20'
+specificationVersion: '0.19'
+apis:
+- aid: whippy:messaging
+  name: Whippy Messaging API
+  tags:
+  - Messaging
+  - SMS
+  - Email
+  - Fax
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.whippy.ai/reference/sendsms
+  baseURL: https://api.whippy.co/v1
+  properties:
+  - url: https://docs.whippy.ai/docs/getting-started
+    type: Documentation
+  - url: https://docs.whippy.ai/reference/sendsms
+    type: APIReference
+  - url: openapi/whippy-openapi.yml
+    type: OpenAPI
+  - url: collections/whippy.postman_collection.json
+    type: PostmanCollection
+  description: Send SMS/MMS, email, and fax messages from an organization channel to
+    a contact, with attachments, opt-in handling, conversation status, and scheduled
+    delivery.
+- aid: whippy:contacts
+  name: Whippy Contacts API
+  tags:
+  - Contacts
+  - CRM
+  - Communication Preferences
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.whippy.ai/reference/createcontact-1
+  baseURL: https://api.whippy.co/v1
+  properties:
+  - url: https://docs.whippy.ai/recipes/create-a-contact
+    type: Documentation
+  - url: https://docs.whippy.ai/reference/createcontact-1
+    type: APIReference
+  - url: openapi/whippy-openapi.yml
+    type: OpenAPI
+  - url: collections/whippy.postman_collection.json
+    type: PostmanCollection
+  description: Create, read, update, delete, search, and upsert contacts, manage
+    per-channel communication preferences (opt in / opt out), and list a contact's
+    sequences.
+- aid: whippy:conversations
+  name: Whippy Conversations API
+  tags:
+  - Conversations
+  - Messages
+  - Inbox
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.whippy.ai/reference/getconversations
+  baseURL: https://api.whippy.co/v1
+  properties:
+  - url: https://docs.whippy.ai/recipes/sync-conversations-messages
+    type: Documentation
+  - url: https://docs.whippy.ai/reference/getconversations
+    type: APIReference
+  - url: openapi/whippy-openapi.yml
+    type: OpenAPI
+  - url: collections/whippy.postman_collection.json
+    type: PostmanCollection
+  description: List, show, search, and update conversations across phone, email, and
+    fax channels, and list or search the messages within them.
+- aid: whippy:campaigns
+  name: Whippy Campaigns API
+  tags:
+  - Campaigns
+  - Bulk Messaging
+  - Analytics
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.whippy.ai/reference/getcampaigns
+  baseURL: https://api.whippy.co/v1
+  properties:
+  - url: https://docs.whippy.ai/recipes/send-an-sms-campaign
+    type: Documentation
+  - url: https://docs.whippy.ai/reference/getcampaigns
+    type: APIReference
+  - url: openapi/whippy-openapi.yml
+    type: OpenAPI
+  - url: collections/whippy.postman_collection.json
+    type: PostmanCollection
+  description: Send SMS campaigns and list, show, and inspect campaign-level
+    analytics (sent, responses, link clicks, unsubscribes) and campaign contacts.
+- aid: whippy:sequences
+  name: Whippy Sequences API
+  tags:
+  - Sequences
+  - Automation
+  - Drip
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.whippy.ai/reference/getsequences
+  baseURL: https://api.whippy.co/v1
+  properties:
+  - url: https://docs.whippy.ai/recipes/add-contacts-to-a-sequence
+    type: Documentation
+  - url: https://docs.whippy.ai/reference/getsequences
+    type: APIReference
+  - url: openapi/whippy-openapi.yml
+    type: OpenAPI
+  - url: collections/whippy.postman_collection.json
+    type: PostmanCollection
+  description: List and show automated multi-step sequences, add or remove contacts,
+    and inspect sequence runs for drip and follow-up automation.
+- aid: whippy:channels
+  name: Whippy Channels API
+  tags:
+  - Channels
+  - Phone Numbers
+  - Locations
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.whippy.ai/reference/getchannels
+  baseURL: https://api.whippy.co/v1
+  properties:
+  - url: https://docs.whippy.ai/docs/getting-started
+    type: Documentation
+  - url: https://docs.whippy.ai/reference/getchannels
+    type: APIReference
+  - url: openapi/whippy-openapi.yml
+    type: OpenAPI
+  - url: collections/whippy.postman_collection.json
+    type: PostmanCollection
+  description: List and show channels (phone, email, fax) with opening hours,
+    AI-agent configuration, and automatic response settings, and manage channel
+    membership.
+- aid: whippy:webhooks
+  name: Whippy Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Custom Events
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.whippy.ai/docs/introduction
+  baseURL: https://api.whippy.co/v1
+  properties:
+  - url: https://docs.whippy.ai/docs/introduction
+    type: Documentation
+  - url: https://docs.whippy.ai/reference/createcustomevent
+    type: APIReference
+  - url: openapi/whippy-openapi.yml
+    type: OpenAPI
+  - url: review.yml
+    type: Review
+  description: Subscribe developer endpoints to resource events (message.created,
+    campaign.updated, etc.) with HMAC-SHA256 signed payloads, and push first-party
+    custom events into Whippy individually or in bulk.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/whippy-ai
+- type: Website
+  url: https://www.whippy.ai
+- type: Documentation
+  url: https://docs.whippy.ai
+- type: Plans
+  url: plans/whippy-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/whippy-rate-limits.yml
+- type: FinOps
+  url: finops/whippy-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

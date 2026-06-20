@@ -1,0 +1,65 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Whippy
+providerId: whippy
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Communication
+- Messaging
+- SMS
+- Email
+- Campaigns
+- Sequences
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Whippy Public API enforces per-organization request rate limits and
+  bounded page sizes on list endpoints (limit default 50, max 500), with
+  per-request maximums on bulk operations such as adding contacts to a
+  sequence (1-4000 contacts per call). Specific requests-per-minute /
+  requests-per-second ceilings are governed per account and tier and are not
+  reconciled in this artifact; messaging throughput is additionally bounded by
+  each plan's monthly credit allocation and carrier throughput.
+notes: >-
+  Verify exact request-rate ceilings, retry / backoff guidance, and bulk
+  payload maximums against the Whippy Public API documentation on
+  reconciliation; values may vary by plan and may change.
+sources:
+- https://docs.whippy.ai/docs/getting-started
+- https://docs.whippy.ai/changelog/changes-to-max-limits
+- https://www.whippy.ai/pricing
+responseCodes:
+  throttled: 429
+limits:
+- name: List Page Size
+  scope: request
+  metric: results
+  limit: 50 default / 500 max
+  notes: limit query parameter on list endpoints; offset is used for pagination.
+- name: Sequence Contacts Per Request
+  scope: request
+  metric: contacts
+  limit: 4000
+  notes: The 'to' array on POST /sequences/{id}/contacts accepts 1-4000 contacts.
+- name: Requests Per Minute
+  scope: organization
+  metric: requests
+  limit: see provider documentation
+  notes: Per-organization API request rate; varies by account and is not reconciled here.
+- name: Messaging Throughput
+  scope: organization
+  metric: messages
+  limit: bounded by plan credits and carrier
+  notes: Outbound messaging is metered against the plan's monthly credit allocation and carrier limits.
+policies:
+- name: Tiered Limits
+  description: Limits and credit allocations scale with the subscribed plan tier (Lite through Custom).
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

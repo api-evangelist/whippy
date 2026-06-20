@@ -1,0 +1,117 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Whippy
+providerId: whippy
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Communication
+- Messaging
+- SMS
+- Email
+- Voice
+- Campaigns
+- Sequences
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Whippy spend. Whippy bills a fixed monthly subscription per
+  plan tier that bundles a monthly message / SMS credit allocation, plus
+  overage and carrier pass-through fees once the allocation is exhausted. Voice
+  AI and certain channels carry their own usage rates. The largest cost drivers
+  are credit consumption (SMS / MMS / email / fax volume), campaign and
+  sequence send volume, and any voice AI minutes. Exact credit-to-message
+  conversion and overage rates are sales-assisted and not reconciled here.
+notes: >-
+  Plan prices, included credits, overage rates, and voice pricing are subject
+  to change; verify against the Whippy pricing pages and your order form during
+  reconciliation.
+sources:
+- https://www.whippy.ai/pricing
+- https://www.whippy.ai/whippy-credits
+- https://www.whippy.ai/pricing/voice-ai-pricing
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Whippy
+serviceCategory: Communication and Messaging
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Subscription
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: Whippy
+  ServiceCategory: Communication and Messaging
+  ProviderName: Whippy
+  PublisherName: Whippy
+  InvoiceIssuerName: Whippy
+  BillingCurrency: USD
+  ChargeCategory: Subscription
+  PricingCategory: Subscription
+meters:
+- name: plan_subscription
+  description: Fixed monthly subscription fee per plan tier.
+  unit: months
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: message_credits
+  description: Credits consumed by outbound SMS / MMS / email / fax against the plan allocation.
+  unit: credits
+  aggregation: sum
+  dimensions:
+  - account
+  - channel
+  - message_type
+- name: credit_overage
+  description: Credits consumed beyond the included monthly allocation, billed at overage rates.
+  unit: credits
+  aggregation: sum
+  dimensions:
+  - account
+  - channel
+- name: campaign_messages
+  description: Messages sent through SMS campaigns, drawing on message credits.
+  unit: messages
+  aggregation: sum
+  dimensions:
+  - account
+  - campaign
+- name: sequence_messages
+  description: Messages sent through automated sequences, drawing on message credits.
+  unit: messages
+  aggregation: sum
+  dimensions:
+  - account
+  - sequence
+- name: voice_ai_minutes
+  description: Voice AI call minutes billed under Whippy voice pricing.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - channel
+principles:
+- name: Visibility
+  description: Track monthly credit burn per channel and campaign / sequence against the plan allocation.
+- name: Allocation
+  description: Map channels, campaigns, sequences, and API keys to internal teams and cost centers.
+- name: Optimization
+  description: Right-size the plan tier to expected credit volume; control campaign / sequence send volume to avoid overage; reserve voice AI for high-value workflows.
+- name: Accountability
+  description: Assign owners per channel / campaign; review credit consumption and overage monthly against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

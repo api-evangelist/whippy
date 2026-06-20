@@ -1,0 +1,217 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Whippy
+providerId: whippy
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Communication
+- Messaging
+- SMS
+- Email
+- Voice
+- AI
+- Campaigns
+- Sequences
+- Plans
+description: >-
+  Whippy uses a sales-assisted, tiered subscription model. Published tiers
+  (Lite, Essentials, Growth, Premium, Professional) bundle a monthly SMS /
+  message credit allocation plus platform features, with a Custom tier for
+  negotiated volume pricing. Messaging is metered against the monthly credit
+  allocation rather than billed per message; overage and carrier pass-through
+  fees apply. The public REST API is available across plans; no separate
+  per-call API price is published. Plan inclusions and credit-to-message
+  conversion are not fully reconciled here.
+notes: >-
+  Monthly prices and credit allocations are as listed on the Whippy pricing
+  page at capture time and are subject to change; confirm current tiers,
+  feature inclusions, credit conversion, and overage rates with Whippy sales
+  on reconciliation.
+sources:
+- https://www.whippy.ai/pricing
+- https://www.whippy.ai/whippy-credits
+- https://www.whippy.ai/pricing/voice-ai-pricing
+plans:
+- id: whippy-lite
+  name: Lite
+  type: subscription
+  description: >-
+    Entry tier with team inbox, SMS campaigns, and mobile app; 2,000 monthly
+    credits.
+  entries:
+  - label: Monthly Subscription
+    name: lite_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $200/month
+    userMultiplied: false
+  - label: Included Credits
+    name: lite_credits
+    type: included
+    metric: credits
+    limit: 2000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Team Inbox
+  - name: SMS Campaigns
+  - name: Mobile App
+  - name: Public API
+- id: whippy-essentials
+  name: Essentials
+  type: subscription
+  description: >-
+    Adds more automation and a larger credit allocation; 7,500 monthly credits.
+  entries:
+  - label: Monthly Subscription
+    name: essentials_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $400/month
+    userMultiplied: false
+  - label: Included Credits
+    name: essentials_credits
+    type: included
+    metric: credits
+    limit: 7500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Team Inbox
+  - name: SMS Campaigns
+  - name: Sequences
+  - name: Public API
+- id: whippy-growth
+  name: Growth
+  type: subscription
+  description: >-
+    Mid tier for scaling teams; 20,000 monthly credits.
+  entries:
+  - label: Monthly Subscription
+    name: growth_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $800/month
+    userMultiplied: false
+  - label: Included Credits
+    name: growth_credits
+    type: included
+    metric: credits
+    limit: 20000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Workflows
+  - name: Sequences
+  - name: Campaigns
+  - name: Public API
+- id: whippy-premium
+  name: Premium
+  type: subscription
+  description: >-
+    Higher-volume tier; 40,000 monthly credits.
+  entries:
+  - label: Monthly Subscription
+    name: premium_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $1,500/month
+    userMultiplied: false
+  - label: Included Credits
+    name: premium_credits
+    type: included
+    metric: credits
+    limit: 40000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Unlimited Workflows
+  - name: Chatbots
+  - name: Campaigns
+  - name: Public API
+- id: whippy-professional
+  name: Professional
+  type: subscription
+  description: >-
+    Top published tier; 100,000 monthly credits with dedicated support.
+  entries:
+  - label: Monthly Subscription
+    name: professional_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $3,000/month
+    userMultiplied: false
+  - label: Included Credits
+    name: professional_credits
+    type: included
+    metric: credits
+    limit: 100000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Unlimited Workflows
+  - name: Unlimited Chatbots
+  - name: Dedicated Support
+  - name: Public API
+- id: whippy-custom
+  name: Custom
+  type: enterprise
+  description: >-
+    Negotiated enterprise tier with best credit pricing, custom volume, and
+    dedicated terms. Contact Whippy sales.
+  entries:
+  - label: Custom Agreement
+    name: custom
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Best Pricing for Whippy Credits
+  - name: Custom Volume
+  - name: Dedicated Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

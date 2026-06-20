@@ -1,0 +1,217 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Whippy Public API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-WHIPPY-KEY",
+      "value": "{{whippyApiKey}}",
+      "in": "header"
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Messaging", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Send an SMS / MMS", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/messaging/sms",
+            "body": { "type": "json", "data": "{\"to\":\"+15555550123\",\"from\":\"+15555550100\",\"body\":\"Hello from Whippy\"}" }
+          },
+          "docs": "Send a text (or MMS) message from a channel to a destination number."
+        },
+        {
+          "info": { "name": "Send an Email", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/messaging/email",
+            "body": { "type": "json", "data": "{\"to\":\"jane@example.com\",\"from\":\"support@yourorg.com\",\"subject\":\"Hello\",\"body\":\"Hello from Whippy\"}" }
+          },
+          "docs": "Send an email from a channel to a destination address."
+        },
+        {
+          "info": { "name": "Send a Fax", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/messaging/fax",
+            "body": { "type": "json", "data": "{\"to\":\"+15555550123\",\"from\":\"+15555550100\",\"attachments\":[\"https://example.com/doc.pdf\"]}" }
+          },
+          "docs": "Send a fax from a fax channel to a destination number."
+        },
+        {
+          "info": { "name": "Send an SMS Campaign", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/messaging/sms/campaign",
+            "body": { "type": "json", "data": "{\"from\":\"+15555550100\",\"title\":\"Spring Promo\",\"body\":\"Hi!\",\"contacts\":[{\"phone\":\"+15555550123\"}]}" }
+          },
+          "docs": "Create and send a bulk SMS campaign."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Contacts", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List Contacts", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/contacts" },
+          "docs": "List contacts with limit / offset pagination."
+        },
+        {
+          "info": { "name": "Create Contact", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/contacts",
+            "body": { "type": "json", "data": "{\"phone\":\"+15555550123\",\"name\":\"Jane Doe\",\"email\":\"jane@example.com\"}" }
+          },
+          "docs": "Create a contact."
+        },
+        {
+          "info": { "name": "Show Contact", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/contacts/:id" },
+          "docs": "Retrieve a single contact by UUID."
+        },
+        {
+          "info": { "name": "Update Contact", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.whippy.co/v1/contacts/:id",
+            "body": { "type": "json", "data": "{\"name\":\"Jane Q. Doe\"}" }
+          },
+          "docs": "Update a contact by UUID."
+        },
+        {
+          "info": { "name": "Delete Contact", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.whippy.co/v1/contacts/:id" },
+          "docs": "Delete a contact by UUID."
+        },
+        {
+          "info": { "name": "Search Contacts", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/contacts/search",
+            "body": { "type": "json", "data": "{\"email\":\"jane@example.com\"}" }
+          },
+          "docs": "Search contacts by phone, email, name, or external_id."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Conversations", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List Conversations", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/conversations" },
+          "docs": "List conversations with status / type filters and pagination."
+        },
+        {
+          "info": { "name": "Show Conversation", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/conversations/:id" },
+          "docs": "Retrieve a single conversation by UUID."
+        },
+        {
+          "info": { "name": "List Messages", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/conversations/:id/messages" },
+          "docs": "List the messages within a conversation."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Campaigns", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List Campaigns", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/campaigns" },
+          "docs": "List campaigns with analytics."
+        },
+        {
+          "info": { "name": "Show Campaign", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/campaigns/:id" },
+          "docs": "Retrieve a single campaign by UUID."
+        },
+        {
+          "info": { "name": "List Campaign Contacts", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/campaigns/:id/contacts" },
+          "docs": "List the contacts in a campaign."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Sequences", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List Sequences", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/sequences" },
+          "docs": "List sequences."
+        },
+        {
+          "info": { "name": "Show Sequence", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/sequences/:id" },
+          "docs": "Retrieve a single sequence by UUID."
+        },
+        {
+          "info": { "name": "Add Contacts to a Sequence", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/sequences/:id/contacts",
+            "body": { "type": "json", "data": "{\"from\":\"+15555550100\",\"to\":[{\"phone\":\"+15555550123\"}]}" }
+          },
+          "docs": "Add 1-4000 contacts to a sequence, optionally at a specific step."
+        },
+        {
+          "info": { "name": "List Sequence Runs", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/sequences/runs" },
+          "docs": "List sequence runs."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Channels", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List Channels", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/channels" },
+          "docs": "List channels with opening hours and AI-agent configuration."
+        },
+        {
+          "info": { "name": "Show Channel", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/channels/:id" },
+          "docs": "Retrieve a single channel by UUID."
+        },
+        {
+          "info": { "name": "List Channel Users", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.whippy.co/v1/channels/:id/users" },
+          "docs": "List the users with access to a channel."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Webhooks", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create Custom Event", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/custom_events",
+            "body": { "type": "json", "data": "{\"event\":\"order.created\",\"external_id\":\"order_123\"}" }
+          },
+          "docs": "Push a first-party custom event into Whippy."
+        },
+        {
+          "info": { "name": "Create Custom Events in Bulk", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/custom_events/bulk",
+            "body": { "type": "json", "data": "{\"events\":[{\"event\":\"order.created\",\"external_id\":\"order_123\"}]}" }
+          },
+          "docs": "Push first-party custom events into Whippy in bulk."
+        }
+      ]
+    }
+  ]
+}

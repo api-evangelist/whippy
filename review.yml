@@ -1,0 +1,93 @@
+aid: whippy
+name: Whippy
+review:
+  question: Does Whippy expose a documented public WebSocket or streaming API?
+  answer: false
+  date: '2026-06-20'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Whippy delivers real-time events via outbound webhooks (server-to-server
+    HTTP POST), not via a client-facing WebSocket or HTTP Server-Sent Events
+    (SSE) stream. Per the API Evangelist scope that allows SSE in AsyncAPI
+    modeling, no AsyncAPI document was created because no SSE or WebSocket
+    surface is documented. The webhook event surface is described below and is
+    referenced from apis.yml under the whippy:webhooks API.
+findings:
+  summary: |
+    Whippy's Public API is a RESTful HTTPS API under https://api.whippy.co/v1,
+    authenticated with the X-WHIPPY-KEY header (OAuth bearer tokens also
+    accepted). Real-time integration is provided through outbound webhooks:
+    developers create a Developer Application (tied to one API key), add
+    Endpoints (server URLs), and subscribe each endpoint to resource events
+    using a "resource.type" naming convention (e.g. message.created,
+    campaign.updated). Webhook deliveries are POST requests carrying data,
+    event, and request_id, signed with an X-Whippy-Signature HMAC-SHA256
+    header, and retried up to 3 times with exponential backoff on non-2xx
+    responses. Whippy also exposes inbound custom events (POST /custom_events
+    and /custom_events/bulk) so first-party systems can push events into
+    Whippy. No client-facing WebSocket (ws:// / wss://) or SSE streaming
+    endpoint is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.whippy.co/v1
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound server-to-server HTTP POST callbacks to subscribed developer endpoints, signed with X-Whippy-Signature (HMAC-SHA256). Not a client streaming transport.
+      documented: true
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events streaming surface is documented.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the Whippy Public API reference or webhook documentation as of the review date.
+  endpointsConfirmedRest:
+    - POST   https://api.whippy.co/v1/messaging/sms
+    - POST   https://api.whippy.co/v1/messaging/email
+    - POST   https://api.whippy.co/v1/messaging/fax
+    - POST   https://api.whippy.co/v1/messaging/sms/campaign
+    - GET    https://api.whippy.co/v1/contacts
+    - POST   https://api.whippy.co/v1/contacts
+    - GET    https://api.whippy.co/v1/contacts/{id}
+    - PUT    https://api.whippy.co/v1/contacts/{id}
+    - DELETE https://api.whippy.co/v1/contacts/{id}
+    - GET    https://api.whippy.co/v1/conversations
+    - GET    https://api.whippy.co/v1/conversations/{id}
+    - GET    https://api.whippy.co/v1/campaigns
+    - GET    https://api.whippy.co/v1/sequences
+    - POST   https://api.whippy.co/v1/sequences/{id}/contacts
+    - GET    https://api.whippy.co/v1/channels
+    - POST   https://api.whippy.co/v1/custom_events
+    - POST   https://api.whippy.co/v1/custom_events/bulk
+  webhookEvents:
+    - naming: resource.type (e.g. message.created, message.updated, campaign.updated, contact.created, conversation.updated, sequence.updated)
+    - delivery: HTTP POST with data, event, and request_id fields
+    - signature: X-Whippy-Signature header (HMAC-SHA256)
+    - retries: up to 3 attempts with exponential backoff on non-2xx responses
+    - registration: Developer Application + Endpoints subscribed to specific events, configured under Settings > Developers
+sources:
+  - url: https://docs.whippy.ai/docs/getting-started
+    type: Documentation
+    note: Confirms RESTful API, X-WHIPPY-KEY auth header, JSON bodies, standard HTTP methods.
+  - url: https://docs.whippy.ai/docs/introduction
+    type: Documentation
+    note: Webhooks overview - resource.type events, payload shape, HMAC-SHA256 signature, retries, endpoint registration.
+  - url: https://docs.whippy.ai/reference/createcustomevent
+    type: APIReference
+    note: Inbound custom events endpoint (POST /custom_events) with associated_resources.
+  - url: https://docs.whippy.ai/reference/sendsms
+    type: APIReference
+    note: All documented endpoints are HTTPS REST; no WebSocket or SSE surface.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists. Whippy's real-time mechanism
+    is outbound webhooks, which are modeled as the whippy:webhooks API in
+    apis.yml with Documentation and APIReference (custom events) properties.
+    No AsyncAPI document was authored because outbound webhooks are not a
+    client streaming transport in scope for AsyncAPI under current scope.

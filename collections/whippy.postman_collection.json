@@ -1,0 +1,672 @@
+{
+  "item": [
+    {
+      "id": "a1f0c0d0-0001-4a00-8000-000000000001",
+      "name": "Messaging",
+      "description": {
+        "content": "Send SMS / MMS, email, and fax messages, and send SMS campaigns.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1f0c0d0-0001-4a00-8000-000000000011",
+          "name": "Send an SMS / MMS",
+          "request": {
+            "name": "Send an SMS / MMS",
+            "description": {},
+            "url": {
+              "path": ["v1", "messaging", "sms"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"+15555550123\",\n  \"from\": \"+15555550100\",\n  \"body\": \"Hello from Whippy\",\n  \"conversation_status\": \"open\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0001-4a00-8000-000000000012",
+          "name": "Send an Email",
+          "request": {
+            "name": "Send an Email",
+            "description": {},
+            "url": {
+              "path": ["v1", "messaging", "email"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"jane@example.com\",\n  \"from\": \"support@yourorg.com\",\n  \"subject\": \"Hello\",\n  \"body\": \"Hello from Whippy\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0001-4a00-8000-000000000013",
+          "name": "Send a Fax",
+          "request": {
+            "name": "Send a Fax",
+            "description": {},
+            "url": {
+              "path": ["v1", "messaging", "fax"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"+15555550123\",\n  \"from\": \"+15555550100\",\n  \"attachments\": [\"https://example.com/doc.pdf\"]\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0001-4a00-8000-000000000014",
+          "name": "Send an SMS Campaign",
+          "request": {
+            "name": "Send an SMS Campaign",
+            "description": {},
+            "url": {
+              "path": ["v1", "messaging", "sms", "campaign"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"+15555550100\",\n  \"title\": \"Spring Promo\",\n  \"body\": \"Hi {{first_name}}, check this out!\",\n  \"contacts\": [{ \"phone\": \"+15555550123\" }]\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1f0c0d0-0002-4a00-8000-000000000001",
+      "name": "Contacts",
+      "description": {
+        "content": "Create, read, update, delete, search, and upsert contacts and manage communication preferences.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1f0c0d0-0002-4a00-8000-000000000011",
+          "name": "List Contacts",
+          "request": {
+            "name": "List Contacts",
+            "description": {},
+            "url": {
+              "path": ["v1", "contacts"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                { "key": "limit", "value": "50" },
+                { "key": "offset", "value": "0" }
+              ],
+              "variable": []
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0002-4a00-8000-000000000012",
+          "name": "Create Contact",
+          "request": {
+            "name": "Create Contact",
+            "description": {},
+            "url": {
+              "path": ["v1", "contacts"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"+15555550123\",\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0002-4a00-8000-000000000013",
+          "name": "Show Contact",
+          "request": {
+            "name": "Show Contact",
+            "description": {},
+            "url": {
+              "path": ["v1", "contacts", ":id"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0002-4a00-8000-000000000014",
+          "name": "Update Contact",
+          "request": {
+            "name": "Update Contact",
+            "description": {},
+            "url": {
+              "path": ["v1", "contacts", ":id"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane Q. Doe\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0002-4a00-8000-000000000015",
+          "name": "Delete Contact",
+          "request": {
+            "name": "Delete Contact",
+            "description": {},
+            "url": {
+              "path": ["v1", "contacts", ":id"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "DELETE",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0002-4a00-8000-000000000016",
+          "name": "Search Contacts",
+          "request": {
+            "name": "Search Contacts",
+            "description": {},
+            "url": {
+              "path": ["v1", "contacts", "search"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"jane@example.com\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1f0c0d0-0003-4a00-8000-000000000001",
+      "name": "Conversations",
+      "description": {
+        "content": "List, show, search, and update conversations and their messages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1f0c0d0-0003-4a00-8000-000000000011",
+          "name": "List Conversations",
+          "request": {
+            "name": "List Conversations",
+            "description": {},
+            "url": {
+              "path": ["v1", "conversations"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                { "key": "limit", "value": "50" },
+                { "key": "offset", "value": "0" }
+              ],
+              "variable": []
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0003-4a00-8000-000000000012",
+          "name": "Show Conversation",
+          "request": {
+            "name": "Show Conversation",
+            "description": {},
+            "url": {
+              "path": ["v1", "conversations", ":id"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0003-4a00-8000-000000000013",
+          "name": "List Messages",
+          "request": {
+            "name": "List Messages",
+            "description": {},
+            "url": {
+              "path": ["v1", "conversations", ":id", "messages"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                { "key": "limit", "value": "50" },
+                { "key": "offset", "value": "0" }
+              ],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1f0c0d0-0004-4a00-8000-000000000001",
+      "name": "Campaigns",
+      "description": {
+        "content": "List and show campaigns and their analytics and contacts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1f0c0d0-0004-4a00-8000-000000000011",
+          "name": "List Campaigns",
+          "request": {
+            "name": "List Campaigns",
+            "description": {},
+            "url": {
+              "path": ["v1", "campaigns"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                { "key": "limit", "value": "50" },
+                { "key": "offset", "value": "0" }
+              ],
+              "variable": []
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0004-4a00-8000-000000000012",
+          "name": "Show Campaign",
+          "request": {
+            "name": "Show Campaign",
+            "description": {},
+            "url": {
+              "path": ["v1", "campaigns", ":id"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0004-4a00-8000-000000000013",
+          "name": "List Campaign Contacts",
+          "request": {
+            "name": "List Campaign Contacts",
+            "description": {},
+            "url": {
+              "path": ["v1", "campaigns", ":id", "contacts"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                { "key": "limit", "value": "50" },
+                { "key": "offset", "value": "0" }
+              ],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1f0c0d0-0005-4a00-8000-000000000001",
+      "name": "Sequences",
+      "description": {
+        "content": "List and show sequences, add or remove contacts, and inspect sequence runs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1f0c0d0-0005-4a00-8000-000000000011",
+          "name": "List Sequences",
+          "request": {
+            "name": "List Sequences",
+            "description": {},
+            "url": {
+              "path": ["v1", "sequences"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                { "key": "limit", "value": "50" },
+                { "key": "offset", "value": "0" }
+              ],
+              "variable": []
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0005-4a00-8000-000000000012",
+          "name": "Show Sequence",
+          "request": {
+            "name": "Show Sequence",
+            "description": {},
+            "url": {
+              "path": ["v1", "sequences", ":id"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0005-4a00-8000-000000000013",
+          "name": "Add Contacts to a Sequence",
+          "request": {
+            "name": "Add Contacts to a Sequence",
+            "description": {},
+            "url": {
+              "path": ["v1", "sequences", ":id", "contacts"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"+15555550100\",\n  \"to\": [{ \"phone\": \"+15555550123\" }]\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0005-4a00-8000-000000000014",
+          "name": "List Sequence Runs",
+          "request": {
+            "name": "List Sequence Runs",
+            "description": {},
+            "url": {
+              "path": ["v1", "sequences", "runs"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                { "key": "limit", "value": "50" },
+                { "key": "offset", "value": "0" }
+              ],
+              "variable": []
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1f0c0d0-0006-4a00-8000-000000000001",
+      "name": "Channels",
+      "description": {
+        "content": "List and show channels and their users.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1f0c0d0-0006-4a00-8000-000000000011",
+          "name": "List Channels",
+          "request": {
+            "name": "List Channels",
+            "description": {},
+            "url": {
+              "path": ["v1", "channels"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0006-4a00-8000-000000000012",
+          "name": "Show Channel",
+          "request": {
+            "name": "Show Channel",
+            "description": {},
+            "url": {
+              "path": ["v1", "channels", ":id"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0006-4a00-8000-000000000013",
+          "name": "List Channel Users",
+          "request": {
+            "name": "List Channel Users",
+            "description": {},
+            "url": {
+              "path": ["v1", "channels", ":id", "users"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "method": "GET",
+            "auth": null,
+            "body": {}
+          },
+          "response": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1f0c0d0-0007-4a00-8000-000000000001",
+      "name": "Webhooks",
+      "description": {
+        "content": "Push first-party custom events into Whippy individually or in bulk.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1f0c0d0-0007-4a00-8000-000000000011",
+          "name": "Create Custom Event",
+          "request": {
+            "name": "Create Custom Event",
+            "description": {},
+            "url": {
+              "path": ["v1", "custom_events"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"order.created\",\n  \"external_id\": \"order_123\",\n  \"associated_resources\": [{ \"resource\": \"contact\", \"id\": \"00000000-0000-0000-0000-000000000000\" }]\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "a1f0c0d0-0007-4a00-8000-000000000012",
+          "name": "Create Custom Events in Bulk",
+          "request": {
+            "name": "Create Custom Events in Bulk",
+            "description": {},
+            "url": {
+              "path": ["v1", "custom_events", "bulk"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [{ \"event\": \"order.created\", \"external_id\": \"order_123\" }]\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.whippy.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "X-WHIPPY-KEY" },
+      { "key": "value", "value": "{{whippyApiKey}}" },
+      { "key": "in", "value": "header" }
+    ]
+  },
+  "info": {
+    "_postman_id": "b7c1e2a0-9f3d-4c21-8a44-7d9e1f0a1b22",
+    "name": "Whippy Public API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for the Whippy AI customer communication platform. Authenticated with the X-WHIPPY-KEY header.\n\nDocumentation: https://docs.whippy.ai",
+      "type": "text/plain"
+    }
+  }
+}
