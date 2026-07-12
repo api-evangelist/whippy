@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/whippy-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: WhippyApiKey
+  type: apiKey
+  in: header
+  parameter: X-WHIPPY-KEY
+  description: Organization API key. Generated in the Whippy app under Settings > Developers.
+    OAuth 2.0 bearer tokens are also accepted via the Authorization header.
+  sources:
+  - openapi/whippy-openapi.yml

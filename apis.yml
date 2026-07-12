@@ -166,6 +166,10 @@ apis:
     campaign.updated, etc.) with HMAC-SHA256 signed payloads, and push first-party
     custom events into Whippy individually or in bulk.
 common:
+- type: DomainSecurity
+  url: security/whippy-domain-security.yml
+- type: Authentication
+  url: authentication/whippy-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/whippy-ai
 - type: Website
@@ -178,6 +182,8 @@ common:
   url: rate-limits/whippy-rate-limits.yml
 - type: FinOps
   url: finops/whippy-finops.yml
+- url: https://www.whippy.ai/blog
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
