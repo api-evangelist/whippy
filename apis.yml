@@ -166,6 +166,8 @@ apis:
     campaign.updated, etc.) with HMAC-SHA256 signed payloads, and push first-party
     custom events into Whippy individually or in bulk.
 common:
+- type: AgenticAccess
+  url: agentic-access/whippy-agentic-access.yml
 - type: DomainSecurity
   url: security/whippy-domain-security.yml
 - type: Authentication
