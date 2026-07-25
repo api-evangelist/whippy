@@ -1,0 +1,159 @@
+openapi: 3.0.1
+info:
+  title: Whippy Public Campaigns Webhooks API
+  description: The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.
+  termsOfService: https://www.whippy.ai/terms-of-service
+  contact:
+    name: Whippy Support
+    url: https://docs.whippy.ai
+  version: '1.0'
+servers:
+- url: https://api.whippy.co/v1
+  description: Whippy Public API v1
+security:
+- WhippyApiKey: []
+tags:
+- name: Webhooks
+  description: Push first-party custom events into Whippy.
+paths:
+  /custom_events:
+    post:
+      operationId: createCustomEvent
+      tags:
+      - Webhooks
+      summary: Create a custom event
+      description: Push a first-party custom event into Whippy, optionally associated to a campaign, contact, conversation, message, or sequence resource.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomEventRequest'
+      responses:
+        '201':
+          description: Event created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomEventResponse'
+        '202':
+          description: Event queued for async processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /custom_events/bulk:
+    post:
+      operationId: createBulkCustomEvents
+      tags:
+      - Webhooks
+      summary: Create custom events in bulk
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - events
+              properties:
+                events:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CustomEventRequest'
+      responses:
+        '202':
+          description: Events queued for async processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+components:
+  responses:
+    Unauthorized:
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    CustomEventRequest:
+      type: object
+      required:
+      - event
+      properties:
+        event:
+          type: string
+        external_id:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        payload:
+          type: object
+          additionalProperties: true
+        associated_resources:
+          type: array
+          items:
+            type: object
+            properties:
+              resource:
+                type: string
+                enum:
+                - campaign
+                - contact
+                - conversation
+                - message
+                - sequence
+              id:
+                type: string
+                format: uuid
+    CustomEventResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            event:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+    AcceptedResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
+  securitySchemes:
+    WhippyApiKey:
+      type: apiKey
+      in: header
+      name: X-WHIPPY-KEY
+      description: Organization API key. Generated in the Whippy app under Settings > Developers. OAuth 2.0 bearer tokens are also accepted via the Authorization header.

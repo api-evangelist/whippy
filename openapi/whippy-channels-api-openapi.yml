@@ -1,0 +1,187 @@
+openapi: 3.0.1
+info:
+  title: Whippy Public Campaigns Channels API
+  description: The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.
+  termsOfService: https://www.whippy.ai/terms-of-service
+  contact:
+    name: Whippy Support
+    url: https://docs.whippy.ai
+  version: '1.0'
+servers:
+- url: https://api.whippy.co/v1
+  description: Whippy Public API v1
+security:
+- WhippyApiKey: []
+tags:
+- name: Channels
+  description: List and inspect channels and channel membership.
+paths:
+  /channels:
+    get:
+      operationId: getChannels
+      tags:
+      - Channels
+      summary: List channels
+      responses:
+        '200':
+          description: A list of channels
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChannelList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /channels/{id}:
+    parameters:
+    - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getChannel
+      tags:
+      - Channels
+      summary: Show a channel
+      responses:
+        '200':
+          description: A single channel
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Channel'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /channels/{id}/users:
+    parameters:
+    - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getChannelUsers
+      tags:
+      - Channels
+      summary: List channel users
+      responses:
+        '200':
+          description: Users with access to the channel
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    ChannelList:
+      type: object
+      properties:
+        organization_id:
+          type: string
+          format: uuid
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
+    Channel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        address:
+          type: string
+        phone:
+          type: string
+        timezone:
+          type: string
+        color:
+          type: string
+        emoji:
+          type: string
+        is_hosted_sms:
+          type: boolean
+        support_ai_agent:
+          type: boolean
+        ai_context:
+          type: string
+        automatic_response_open:
+          type: string
+        automatic_response_closed:
+          type: string
+        opening_hours:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpeningHour'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    OpeningHour:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        weekday:
+          type: string
+          enum:
+          - Monday
+          - Tuesday
+          - Wednesday
+          - Thursday
+          - Friday
+          - Saturday
+          - Sunday
+        opens_at:
+          type: string
+        closes_at:
+          type: string
+        state:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
+  parameters:
+    PathId:
+      name: id
+      in: path
+      required: true
+      description: Resource UUID.
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    WhippyApiKey:
+      type: apiKey
+      in: header
+      name: X-WHIPPY-KEY
+      description: Organization API key. Generated in the Whippy app under Settings > Developers. OAuth 2.0 bearer tokens are also accepted via the Authorization header.

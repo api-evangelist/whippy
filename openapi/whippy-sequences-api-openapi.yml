@@ -1,0 +1,434 @@
+openapi: 3.0.1
+info:
+  title: Whippy Public Campaigns Sequences API
+  description: The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.
+  termsOfService: https://www.whippy.ai/terms-of-service
+  contact:
+    name: Whippy Support
+    url: https://docs.whippy.ai
+  version: '1.0'
+servers:
+- url: https://api.whippy.co/v1
+  description: Whippy Public API v1
+security:
+- WhippyApiKey: []
+tags:
+- name: Sequences
+  description: Manage automated multi-step sequences and their contacts.
+paths:
+  /sequences:
+    get:
+      operationId: getSequences
+      tags:
+      - Sequences
+      summary: List sequences
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of sequences
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SequenceList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sequences/{id}:
+    parameters:
+    - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getSequence
+      tags:
+      - Sequences
+      summary: Show a sequence
+      responses:
+        '200':
+          description: A single sequence
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Sequence'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sequences/{id}/contacts:
+    parameters:
+    - $ref: '#/components/parameters/PathId'
+    get:
+      operationId: getSequenceContacts
+      tags:
+      - Sequences
+      summary: List sequence contacts
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of sequence contacts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSequenceContacts
+      tags:
+      - Sequences
+      summary: Add contacts to a sequence
+      description: Add 1-4000 contacts to a sequence, optionally at a specific step.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSequenceContactsRequest'
+      responses:
+        '202':
+          description: Sequence contacts accepted for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+    delete:
+      operationId: removeSequenceContacts
+      tags:
+      - Sequences
+      summary: Remove contacts from a sequence
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - contacts
+              properties:
+                contacts:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      phone:
+                        type: string
+      responses:
+        '202':
+          description: Removal accepted for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sequences/runs:
+    get:
+      operationId: getSequenceRuns
+      tags:
+      - Sequences
+      summary: List sequence runs
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of sequence runs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SequenceRun'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Sequence:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        channel_id:
+          type: string
+          format: uuid
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/SequenceStep'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Address:
+      type: object
+      properties:
+        address_line_one:
+          type: string
+        address_line_two:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postal_code:
+          type: string
+    CreateContactRequest:
+      type: object
+      required:
+      - phone
+      properties:
+        phone:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        external_id:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        birth_date:
+          $ref: '#/components/schemas/BirthDate'
+        language:
+          type: string
+        default_channel_id:
+          type: string
+          format: uuid
+        properties:
+          type: object
+          additionalProperties: true
+        opt_in_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptInChannel'
+        opt_in_to_all_channels:
+          type: boolean
+    SequenceList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sequence'
+        total:
+          type: integer
+    ContactList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        total:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
+    SequenceStep:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+        body:
+          type: string
+        delay:
+          type: integer
+    AcceptedResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+    CreateSequenceContactsRequest:
+      type: object
+      required:
+      - to
+      properties:
+        to:
+          type: array
+          minItems: 1
+          maxItems: 4000
+          items:
+            $ref: '#/components/schemas/CreateContactRequest'
+        from:
+          type: string
+          description: Phone / email of an existing channel (must match step type).
+        step_id:
+          type: string
+          format: uuid
+          description: Sequence step UUID (defaults to the first step).
+        schedule_at:
+          type: string
+          format: date-time
+        custom_data:
+          type: object
+          properties:
+            custom_object_id:
+              type: string
+              format: uuid
+            resource:
+              type: object
+              additionalProperties: true
+        voice_options:
+          type: object
+          properties:
+            default_call_flow_id:
+              type: string
+              format: uuid
+            step_overrides:
+              type: object
+              additionalProperties: true
+    SequenceRun:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        sequence_id:
+          type: string
+          format: uuid
+        contact_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        phone:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        external_id:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        birth_date:
+          $ref: '#/components/schemas/BirthDate'
+        state:
+          type: string
+          enum:
+          - open
+          - archived
+          - blocked
+        blocked:
+          type: boolean
+        communication_preferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommunicationPreference'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    BirthDate:
+      type: object
+      properties:
+        day:
+          type: integer
+        month:
+          type: integer
+        year:
+          type: integer
+    CommunicationPreference:
+      type: object
+      properties:
+        channel_id:
+          type: string
+          format: uuid
+        opt_in:
+          type: boolean
+        updated_at:
+          type: string
+          format: date-time
+    OptInChannel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        phone:
+          type: string
+  parameters:
+    Offset:
+      name: offset
+      in: query
+      description: Number of results to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    PathId:
+      name: id
+      in: path
+      required: true
+      description: Resource UUID.
+      schema:
+        type: string
+        format: uuid
+    Limit:
+      name: limit
+      in: query
+      description: Number of results per page (default 50, max 500).
+      schema:
+        type: integer
+        default: 50
+        maximum: 500
+  responses:
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    WhippyApiKey:
+      type: apiKey
+      in: header
+      name: X-WHIPPY-KEY
+      description: Organization API key. Generated in the Whippy app under Settings > Developers. OAuth 2.0 bearer tokens are also accepted via the Authorization header.

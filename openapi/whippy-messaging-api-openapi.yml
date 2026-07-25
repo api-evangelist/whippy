@@ -1,0 +1,358 @@
+openapi: 3.0.1
+info:
+  title: Whippy Public Campaigns Messaging API
+  description: The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.
+  termsOfService: https://www.whippy.ai/terms-of-service
+  contact:
+    name: Whippy Support
+    url: https://docs.whippy.ai
+  version: '1.0'
+servers:
+- url: https://api.whippy.co/v1
+  description: Whippy Public API v1
+security:
+- WhippyApiKey: []
+tags:
+- name: Messaging
+  description: Send SMS / MMS, email, and fax messages.
+paths:
+  /messaging/sms:
+    post:
+      operationId: sendSms
+      tags:
+      - Messaging
+      summary: Send an SMS / MMS
+      description: Send a text (or MMS, via attachments) message from an existing organization channel to a destination phone number. Either body or attachments must be provided.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendSmsRequest'
+      responses:
+        '201':
+          description: Message queued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendMessageResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /messaging/email:
+    post:
+      operationId: sendEmail
+      tags:
+      - Messaging
+      summary: Send an email
+      description: Send an email from an existing organization channel to a destination email address with optional subject, CC / BCC, reply-to, and attachments. Either body or attachments must be provided.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailRequest'
+      responses:
+        '201':
+          description: Email queued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendMessageResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /messaging/fax:
+    post:
+      operationId: sendFax
+      tags:
+      - Messaging
+      summary: Send a fax
+      description: Send a fax from an existing fax channel to a destination number.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendFaxRequest'
+      responses:
+        '201':
+          description: Fax queued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendMessageResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /messaging/sms/campaign:
+    post:
+      operationId: sendCampaign
+      tags:
+      - Messaging
+      summary: Send an SMS campaign
+      description: Create and send a bulk SMS campaign from a channel to a list of contacts.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendCampaignRequest'
+      responses:
+        '202':
+          description: Campaign accepted for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+components:
+  schemas:
+    SendMessageResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            contact_id:
+              type: string
+              format: uuid
+            conversation_id:
+              type: string
+              format: uuid
+            delivery_status:
+              type: string
+              example: queued
+    Address:
+      type: object
+      properties:
+        address_line_one:
+          type: string
+        address_line_two:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postal_code:
+          type: string
+    CreateContactRequest:
+      type: object
+      required:
+      - phone
+      properties:
+        phone:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        external_id:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        birth_date:
+          $ref: '#/components/schemas/BirthDate'
+        language:
+          type: string
+        default_channel_id:
+          type: string
+          format: uuid
+        properties:
+          type: object
+          additionalProperties: true
+        opt_in_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptInChannel'
+        opt_in_to_all_channels:
+          type: boolean
+    SendEmailRequest:
+      type: object
+      required:
+      - to
+      - from
+      properties:
+        to:
+          type: string
+        from:
+          type: string
+        subject:
+          type: string
+        body:
+          type: string
+          description: Plain text or HTML body. Required if attachments is empty.
+        attachments:
+          type: array
+          items:
+            type: string
+        cc:
+          type: array
+          items:
+            type: string
+        bcc:
+          type: array
+          items:
+            type: string
+        reply_to:
+          type: string
+        sender_name:
+          type: string
+        sender_email:
+          type: string
+        schedule_at:
+          type: string
+          format: date-time
+        conversation_status:
+          type: string
+          enum:
+          - automated
+          - open
+          default: open
+        opt_in_to_all_channels:
+          type: boolean
+        opt_in_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptInChannel'
+    OptInChannel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        phone:
+          type: string
+    SendCampaignRequest:
+      type: object
+      required:
+      - from
+      - body
+      - contacts
+      properties:
+        from:
+          type: string
+          description: Phone of an existing channel.
+        title:
+          type: string
+        body:
+          type: string
+        attachments:
+          type: array
+          items:
+            type: string
+        schedule_at:
+          type: string
+          format: date-time
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateContactRequest'
+    BirthDate:
+      type: object
+      properties:
+        day:
+          type: integer
+        month:
+          type: integer
+        year:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
+    AcceptedResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+    SendFaxRequest:
+      type: object
+      required:
+      - to
+      - from
+      - attachments
+      properties:
+        to:
+          type: string
+        from:
+          type: string
+        attachments:
+          type: array
+          items:
+            type: string
+        schedule_at:
+          type: string
+          format: date-time
+    SendSmsRequest:
+      type: object
+      required:
+      - to
+      - from
+      properties:
+        to:
+          type: string
+          description: Destination phone number.
+        from:
+          type: string
+          description: Phone of an existing channel belonging to your organization.
+        body:
+          type: string
+          description: Message content (max 1000 characters). Required if attachments is empty.
+          maxLength: 1000
+        attachments:
+          type: array
+          items:
+            type: string
+          description: List of attachment URLs.
+        opt_in_to_all_channels:
+          type: boolean
+        opt_in_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptInChannel'
+        conversation_status:
+          type: string
+          enum:
+          - automated
+          - open
+          - closed
+        schedule_at:
+          type: string
+          format: date-time
+  responses:
+    Unauthorized:
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    WhippyApiKey:
+      type: apiKey
+      in: header
+      name: X-WHIPPY-KEY
+      description: Organization API key. Generated in the Whippy app under Settings > Developers. OAuth 2.0 bearer tokens are also accepted via the Authorization header.
