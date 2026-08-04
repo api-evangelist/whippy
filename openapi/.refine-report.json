@@ -1,0 +1,26 @@
+{
+  "provider": "whippy",
+  "sources": [
+    "whippy-campaigns-api-openapi.yml",
+    "whippy-channels-api-openapi.yml",
+    "whippy-contacts-api-openapi.yml",
+    "whippy-conversations-api-openapi.yml",
+    "whippy-messaging-api-openapi.yml",
+    "whippy-sequences-api-openapi.yml",
+    "whippy-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "whippy-campaigns-api-openapi.yml",
+    "whippy-channels-api-openapi.yml",
+    "whippy-contacts-api-openapi.yml",
+    "whippy-conversations-api-openapi.yml",
+    "whippy-messaging-api-openapi.yml",
+    "whippy-sequences-api-openapi.yml",
+    "whippy-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
