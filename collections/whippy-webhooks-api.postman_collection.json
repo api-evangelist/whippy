@@ -1,0 +1,503 @@
+{
+  "item": [
+    {
+      "id": "718df6a7-8153-40db-938b-ab25c08cb268",
+      "name": "Webhooks",
+      "description": {
+        "content": "Push first-party custom events into Whippy.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "21423c8e-24fe-441d-985c-3231eded0db7",
+          "name": "Create a custom event",
+          "request": {
+            "name": "Create a custom event",
+            "description": {
+              "content": "Push a first-party custom event into Whippy, optionally associated to a campaign, contact, conversation, message, or sequence resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "custom_events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"payload\": {\n    \"key_0\": 8368\n  },\n  \"associated_resources\": [\n    {\n      \"resource\": \"<string>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"resource\": \"<string>\",\n      \"id\": \"<uuid>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8f9efdda-fb40-4014-9012-92e96f2f88f6",
+              "name": "Event created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"payload\": {\n    \"key_0\": 9034.233847005566,\n    \"key_1\": false\n  },\n  \"associated_resources\": [\n    {\n      \"resource\": \"<string>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"resource\": \"<string>\",\n      \"id\": \"<uuid>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"960bcf42-dcac-d77f-06c5-bf7a1bdef66e\",\n    \"event\": \"string\",\n    \"created_at\": \"1962-03-08T14:42:25.822Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bdb5d36-28e3-4877-9b9e-b16855d53d27",
+              "name": "Event queued for async processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"payload\": {\n    \"key_0\": 9034.233847005566,\n    \"key_1\": false\n  },\n  \"associated_resources\": [\n    {\n      \"resource\": \"<string>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"resource\": \"<string>\",\n      \"id\": \"<uuid>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c293050f-b60b-4cb3-8026-801008851833",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"payload\": {\n    \"key_0\": 9034.233847005566,\n    \"key_1\": false\n  },\n  \"associated_resources\": [\n    {\n      \"resource\": \"<string>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"resource\": \"<string>\",\n      \"id\": \"<uuid>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 1268\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d4a741f-6dce-41dd-bce7-6c75f841569f",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"payload\": {\n    \"key_0\": 9034.233847005566,\n    \"key_1\": false\n  },\n  \"associated_resources\": [\n    {\n      \"resource\": \"<string>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"resource\": \"<string>\",\n      \"id\": \"<uuid>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 1268\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef138d6a-e3fc-4147-98a6-3c383e7904ac",
+          "name": "Create custom events in bulk",
+          "request": {
+            "name": "Create custom events in bulk",
+            "description": {},
+            "url": {
+              "path": [
+                "custom_events",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    {\n      \"event\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"payload\": {\n        \"key_0\": 7853,\n        \"key_1\": \"string\",\n        \"key_2\": true\n      },\n      \"associated_resources\": [\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        },\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        }\n      ]\n    },\n    {\n      \"event\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"payload\": {\n        \"key_0\": 2608.3553800039595,\n        \"key_1\": true,\n        \"key_2\": 3058.7384279657495\n      },\n      \"associated_resources\": [\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        },\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "afdc77b9-423d-440b-9089-e3812a9667b4",
+              "name": "Events queued for async processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_events",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"event\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"payload\": {\n        \"key_0\": \"string\",\n        \"key_1\": 133.2587957721698,\n        \"key_2\": false\n      },\n      \"associated_resources\": [\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        },\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        }\n      ]\n    },\n    {\n      \"event\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"payload\": {\n        \"key_0\": false\n      },\n      \"associated_resources\": [\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        },\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "026110c4-f57f-4eab-941d-6afd01d96900",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_events",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"event\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"payload\": {\n        \"key_0\": \"string\",\n        \"key_1\": 133.2587957721698,\n        \"key_2\": false\n      },\n      \"associated_resources\": [\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        },\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        }\n      ]\n    },\n    {\n      \"event\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"payload\": {\n        \"key_0\": false\n      },\n      \"associated_resources\": [\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        },\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 1268\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9fdc452-be57-473e-be27-22f9c487d247",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_events",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"event\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"payload\": {\n        \"key_0\": \"string\",\n        \"key_1\": 133.2587957721698,\n        \"key_2\": false\n      },\n      \"associated_resources\": [\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        },\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        }\n      ]\n    },\n    {\n      \"event\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"payload\": {\n        \"key_0\": false\n      },\n      \"associated_resources\": [\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        },\n        {\n          \"resource\": \"<string>\",\n          \"id\": \"<uuid>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 1268\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.whippy.co/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-WHIPPY-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "94cd0c0f-765f-4377-9eec-a90de9c2ed33",
+    "name": "Whippy Public Campaigns Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.\n\nContact Support:\n Name: Whippy Support",
+      "type": "text/plain"
+    }
+  }
+}

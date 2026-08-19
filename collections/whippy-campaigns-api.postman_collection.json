@@ -1,0 +1,771 @@
+{
+  "item": [
+    {
+      "id": "15b21066-ec63-48ae-abd7-0fdfee8b28c3",
+      "name": "Campaigns",
+      "description": {
+        "content": "Send campaigns and inspect campaign analytics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b61db636-7e29-4355-a045-6eb9fed76edf",
+          "name": "Send an SMS campaign",
+          "request": {
+            "name": "Send an SMS campaign",
+            "description": {
+              "content": "Create and send a bulk SMS campaign from a channel to a list of contacts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "messaging",
+                "sms",
+                "campaign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"contacts\": [\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 4126,\n        \"key_1\": 2391.2012300771235\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    },\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 4612.628106293733,\n        \"key_1\": false\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    }\n  ],\n  \"title\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35ce3c70-6565-4908-8f06-9815711c685d",
+              "name": "Campaign accepted for processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "sms",
+                    "campaign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"contacts\": [\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 1732\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    },\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 2281.446186421635\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    }\n  ],\n  \"title\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07886616-0062-4678-b54e-f4cec5cd9d2f",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "sms",
+                    "campaign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"contacts\": [\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 1732\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    },\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 2281.446186421635\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    }\n  ],\n  \"title\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 895\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5993cccb-124b-470e-b249-573205a8c13a",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "sms",
+                    "campaign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"contacts\": [\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 1732\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    },\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 2281.446186421635\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    }\n  ],\n  \"title\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 895\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00c36a01-07be-4766-978b-85e896e262b8",
+          "name": "List campaigns",
+          "request": {
+            "name": "List campaigns",
+            "description": {},
+            "url": {
+              "path": [
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Number of results per page (default 50, max 500)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of results to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>",
+                  "description": "Filter by campaign title."
+                },
+                {
+                  "disabled": false,
+                  "key": "status[]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status[]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69ea7c1f-e1f4-491b-86bd-c5f78193ef13",
+              "name": "A page of campaigns",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"campaign_id\": \"8d5045ac-d9c9-80c8-c0c8-5973697ab43a\",\n      \"campaign_title\": \"string\",\n      \"sent_messages\": 7677,\n      \"slated_messages\": 4211,\n      \"failed_deliveries\": 3798,\n      \"responses\": 2943,\n      \"link_clicks\": 6718,\n      \"unsubscribes\": 3925\n    },\n    {\n      \"campaign_id\": \"2c866039-c4b7-723d-897f-abfe81eb9452\",\n      \"campaign_title\": \"string\",\n      \"sent_messages\": 1919,\n      \"slated_messages\": 4934,\n      \"failed_deliveries\": 8958,\n      \"responses\": 3625,\n      \"link_clicks\": 4376,\n      \"unsubscribes\": 7820\n    }\n  ],\n  \"total\": 4729\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bd9167a-69c2-4a4e-b16d-759bf932b80a",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 895\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce22671f-112f-4f04-a53f-0e3fcfeaaa80",
+          "name": "Show a campaign",
+          "request": {
+            "name": "Show a campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "campaigns",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35ec7bdd-1a95-4fa1-b120-f1b08e855f60",
+              "name": "A single campaign",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"campaign_id\": \"042be546-2539-5d32-9a6d-e8b6286babe6\",\n    \"campaign_title\": \"string\",\n    \"sent_messages\": 9632,\n    \"slated_messages\": 1090,\n    \"failed_deliveries\": 9008,\n    \"responses\": 2181,\n    \"link_clicks\": 7548,\n    \"unsubscribes\": 55\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b8fb8bb-5439-4cc1-8d0c-b4b914b64af4",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 895\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24287c30-b1d8-430e-9e5c-e3a3c9148d07",
+          "name": "List campaign contacts",
+          "request": {
+            "name": "List campaign contacts",
+            "description": {},
+            "url": {
+              "path": [
+                "campaigns",
+                ":id",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Number of results per page (default 50, max 500)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of results to skip for pagination."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1bf6bf98-a203-4cc0-9677-5e941563c572",
+              "name": "A page of campaign contacts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"9587ee17-9309-368f-90ef-aacb586fc224\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"name\": \"string\",\n      \"external_id\": \"string\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"state\": \"blocked\",\n      \"blocked\": false,\n      \"communication_preferences\": [\n        {\n          \"channel_id\": \"d5a491c6-9594-4c53-be22-5f3e6c4e8c7f\",\n          \"opt_in\": true,\n          \"updated_at\": \"2012-11-12T15:09:44.688Z\"\n        },\n        {\n          \"channel_id\": \"121ac05a-dfbc-73c0-df7e-f1dbb8ff2457\",\n          \"opt_in\": true,\n          \"updated_at\": \"1977-05-23T06:04:52.065Z\"\n        }\n      ],\n      \"created_at\": \"1991-10-30T13:47:22.291Z\",\n      \"updated_at\": \"1970-07-03T19:31:02.838Z\"\n    },\n    {\n      \"id\": \"72ac6cc0-2114-4731-8e0f-20e07bbee9c4\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"name\": \"string\",\n      \"external_id\": \"string\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"state\": \"open\",\n      \"blocked\": true,\n      \"communication_preferences\": [\n        {\n          \"channel_id\": \"aae899ac-90c9-ca41-818c-1766a65d6f43\",\n          \"opt_in\": false,\n          \"updated_at\": \"1958-04-17T16:00:26.374Z\"\n        },\n        {\n          \"channel_id\": \"9049a40b-036b-072c-96b8-4e94a66492ca\",\n          \"opt_in\": false,\n          \"updated_at\": \"1984-11-16T16:37:28.576Z\"\n        }\n      ],\n      \"created_at\": \"1957-04-07T19:51:24.791Z\",\n      \"updated_at\": \"1947-05-27T06:09:47.193Z\"\n    }\n  ],\n  \"total\": 9326\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3fc7ac2-3c8d-4338-bdb6-47957ffc1235",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 895\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.whippy.co/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-WHIPPY-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8064f7d4-7f68-4366-b15d-ffeac111abe0",
+    "name": "Whippy Public Campaigns API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.\n\nContact Support:\n Name: Whippy Support",
+      "type": "text/plain"
+    }
+  }
+}

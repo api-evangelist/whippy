@@ -1,0 +1,460 @@
+{
+  "item": [
+    {
+      "id": "0365f111-63b7-4a12-9e89-de4bcfcf57ac",
+      "name": "Channels",
+      "description": {
+        "content": "List and inspect channels and channel membership.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e1cdc63-4dcb-45e4-9d8e-d378ba893980",
+          "name": "List channels",
+          "request": {
+            "name": "List channels",
+            "description": {},
+            "url": {
+              "path": [
+                "channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cefa71db-89b3-4d7b-a38e-d0f27f3c71a3",
+              "name": "A list of channels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organization_id\": \"741bbb88-dc72-0a1e-53c4-957c1d8c5aa3\",\n  \"data\": [\n    {\n      \"id\": \"a186760e-ef03-b667-fe2d-cf5ee5fe1532\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"address\": \"string\",\n      \"phone\": \"string\",\n      \"timezone\": \"string\",\n      \"color\": \"string\",\n      \"emoji\": \"string\",\n      \"is_hosted_sms\": false,\n      \"support_ai_agent\": true,\n      \"ai_context\": \"string\",\n      \"automatic_response_open\": \"string\",\n      \"automatic_response_closed\": \"string\",\n      \"opening_hours\": [\n        {\n          \"id\": \"b01918d6-c6a5-acc8-9615-161a30b32fbb\",\n          \"weekday\": \"Saturday\",\n          \"opens_at\": \"string\",\n          \"closes_at\": \"string\",\n          \"state\": \"string\"\n        },\n        {\n          \"id\": \"c7603d6d-f2a2-620f-1caa-ef9b9ec4dac8\",\n          \"weekday\": \"Tuesday\",\n          \"opens_at\": \"string\",\n          \"closes_at\": \"string\",\n          \"state\": \"string\"\n        }\n      ],\n      \"created_at\": \"1961-01-17T13:05:27.703Z\",\n      \"updated_at\": \"1976-02-28T18:34:14.637Z\"\n    },\n    {\n      \"id\": \"ff626632-90e7-3ddb-c314-37c6f6c81f1c\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"address\": \"string\",\n      \"phone\": \"string\",\n      \"timezone\": \"string\",\n      \"color\": \"string\",\n      \"emoji\": \"string\",\n      \"is_hosted_sms\": true,\n      \"support_ai_agent\": true,\n      \"ai_context\": \"string\",\n      \"automatic_response_open\": \"string\",\n      \"automatic_response_closed\": \"string\",\n      \"opening_hours\": [\n        {\n          \"id\": \"bf0b6504-fa46-30ae-06de-3fce0a5e22a0\",\n          \"weekday\": \"Saturday\",\n          \"opens_at\": \"string\",\n          \"closes_at\": \"string\",\n          \"state\": \"string\"\n        },\n        {\n          \"id\": \"bdd60bfc-79bb-c88d-13ba-c065f5f8355e\",\n          \"weekday\": \"Wednesday\",\n          \"opens_at\": \"string\",\n          \"closes_at\": \"string\",\n          \"state\": \"string\"\n        }\n      ],\n      \"created_at\": \"1979-03-18T13:22:23.834Z\",\n      \"updated_at\": \"1976-09-09T08:46:25.201Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49e3d16a-74e2-405e-b576-6aea0de4afc1",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5542\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24366407-73d2-476a-af60-a0481168bcd4",
+          "name": "Show a channel",
+          "request": {
+            "name": "Show a channel",
+            "description": {},
+            "url": {
+              "path": [
+                "channels",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46f59c6b-a5c0-4ec0-a11b-69491ab98644",
+              "name": "A single channel",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"11ab35ac-cb9d-14e4-bc1c-525a462827c2\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"address\": \"string\",\n    \"phone\": \"string\",\n    \"timezone\": \"string\",\n    \"color\": \"string\",\n    \"emoji\": \"string\",\n    \"is_hosted_sms\": true,\n    \"support_ai_agent\": true,\n    \"ai_context\": \"string\",\n    \"automatic_response_open\": \"string\",\n    \"automatic_response_closed\": \"string\",\n    \"opening_hours\": [\n      {\n        \"id\": \"99183221-f50e-40e4-56a1-3ecee04ae349\",\n        \"weekday\": \"Thursday\",\n        \"opens_at\": \"string\",\n        \"closes_at\": \"string\",\n        \"state\": \"string\"\n      },\n      {\n        \"id\": \"a3ef0959-2fb8-d93f-bc60-3997b8d774f4\",\n        \"weekday\": \"Wednesday\",\n        \"opens_at\": \"string\",\n        \"closes_at\": \"string\",\n        \"state\": \"string\"\n      }\n    ],\n    \"created_at\": \"1972-03-18T09:34:08.822Z\",\n    \"updated_at\": \"1982-08-19T11:32:53.853Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9b09441-4ec5-4f44-8af2-d7df0ca5e567",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5542\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42a6c530-9787-4e96-b0d7-9f959a8bcf84",
+          "name": "List channel users",
+          "request": {
+            "name": "List channel users",
+            "description": {},
+            "url": {
+              "path": [
+                "channels",
+                ":id",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a46a88fa-749c-400e-869c-2bf999fcb8d4",
+              "name": "Users with access to the channel",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":id",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 2371,\n      \"name\": \"string\",\n      \"email\": \"string\"\n    },\n    {\n      \"id\": 221,\n      \"name\": \"string\",\n      \"email\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04650dfa-0b74-4ded-a98c-dd91e54a610b",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":id",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5542\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.whippy.co/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-WHIPPY-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5d5ddf50-312b-45a6-83cd-71fa9cb77d7d",
+    "name": "Whippy Public Campaigns Channels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.\n\nContact Support:\n Name: Whippy Support",
+      "type": "text/plain"
+    }
+  }
+}

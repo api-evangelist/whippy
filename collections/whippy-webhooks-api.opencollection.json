@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Whippy Public Campaigns Webhooks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-WHIPPY-KEY",
+      "value": "{{X-WHIPPY-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a custom event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/custom_events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Push a first-party custom event into Whippy, optionally associated to a campaign, contact, conversation, message, or sequence resource."
+        },
+        {
+          "info": {
+            "name": "Create custom events in bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/custom_events/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create custom events in bulk"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

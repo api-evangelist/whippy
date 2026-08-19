@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Whippy Public Campaigns Messaging API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-WHIPPY-KEY",
+      "value": "{{X-WHIPPY-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messaging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send an SMS / MMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/messaging/sms",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a text (or MMS, via attachments) message from an existing organization channel to a destination phone number. Either body or attachments must be provided."
+        },
+        {
+          "info": {
+            "name": "Send an email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/messaging/email",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an email from an existing organization channel to a destination email address with optional subject, CC / BCC, reply-to, and attachments. Either body or attachments must be provided."
+        },
+        {
+          "info": {
+            "name": "Send a fax",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/messaging/fax",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a fax from an existing fax channel to a destination number."
+        },
+        {
+          "info": {
+            "name": "Send an SMS campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.whippy.co/v1/messaging/sms/campaign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create and send a bulk SMS campaign from a channel to a list of contacts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

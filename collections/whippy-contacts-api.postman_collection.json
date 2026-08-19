@@ -1,0 +1,1719 @@
+{
+  "item": [
+    {
+      "id": "d5041996-4d54-4dd4-a1e5-0645108bbdb8",
+      "name": "Contacts",
+      "description": {
+        "content": "Manage contacts and communication preferences.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8ad32e8b-b224-4bd8-bbb8-d9d194a181b3",
+          "name": "List contacts",
+          "request": {
+            "name": "List contacts",
+            "description": {},
+            "url": {
+              "path": [
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Number of results per page (default 50, max 500)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of results to skip for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd9382cc-e5d9-4a6c-9af3-1bde25c411ec",
+              "name": "A page of contacts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"e663fc8e-1ff0-ab6b-13bc-2bdfa1ec46d3\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"name\": \"string\",\n      \"external_id\": \"string\",\n      \"address\": {\n        \"address_line_one\": \"string\",\n        \"address_line_two\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"country\": \"string\",\n        \"postal_code\": \"string\"\n      },\n      \"birth_date\": {\n        \"day\": 6524,\n        \"month\": 6271,\n        \"year\": 7520\n      },\n      \"state\": \"archived\",\n      \"blocked\": false,\n      \"communication_preferences\": [\n        {\n          \"channel_id\": \"78c3aaf7-5e36-caca-a63f-a714983b7aa5\",\n          \"opt_in\": true,\n          \"updated_at\": \"1957-06-27T20:18:38.007Z\"\n        },\n        {\n          \"channel_id\": \"ae248ab6-ea58-5b18-8946-069225a6e3e1\",\n          \"opt_in\": false,\n          \"updated_at\": \"1985-12-16T05:39:24.467Z\"\n        }\n      ],\n      \"created_at\": \"1983-06-07T19:08:15.917Z\",\n      \"updated_at\": \"1971-01-29T20:26:50.696Z\"\n    },\n    {\n      \"id\": \"d71c061f-9301-f694-d13c-37830b2a0c34\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"name\": \"string\",\n      \"external_id\": \"string\",\n      \"address\": {\n        \"address_line_one\": \"string\",\n        \"address_line_two\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"country\": \"string\",\n        \"postal_code\": \"string\"\n      },\n      \"birth_date\": {\n        \"day\": 7814,\n        \"month\": 1114,\n        \"year\": 1277\n      },\n      \"state\": \"archived\",\n      \"blocked\": true,\n      \"communication_preferences\": [\n        {\n          \"channel_id\": \"e04a73fe-2469-2327-bd5a-743b4c830b9d\",\n          \"opt_in\": false,\n          \"updated_at\": \"2010-05-23T21:35:21.057Z\"\n        },\n        {\n          \"channel_id\": \"a9190126-ce42-fb93-e5e1-23130b7feefe\",\n          \"opt_in\": false,\n          \"updated_at\": \"1980-01-19T22:22:22.073Z\"\n        }\n      ],\n      \"created_at\": \"1986-07-16T17:02:31.505Z\",\n      \"updated_at\": \"1982-02-11T16:55:31.615Z\"\n    }\n  ],\n  \"total\": 1083\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "face496b-c108-46a2-b75d-e0319df35791",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01c1dcb3-9918-449b-a974-c0b504def8d1",
+          "name": "Create a contact",
+          "request": {
+            "name": "Create a contact",
+            "description": {},
+            "url": {
+              "path": [
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"address\": {\n    \"address_line_one\": \"<string>\",\n    \"address_line_two\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"birth_date\": {\n    \"day\": \"<integer>\",\n    \"month\": \"<integer>\",\n    \"year\": \"<integer>\"\n  },\n  \"language\": \"<string>\",\n  \"default_channel_id\": \"<uuid>\",\n  \"properties\": {\n    \"key_0\": 5058.688886291204,\n    \"key_1\": \"string\"\n  },\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19436006-158c-4046-9fd4-f1b4242264a5",
+              "name": "Contact created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"address\": {\n    \"address_line_one\": \"<string>\",\n    \"address_line_two\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"birth_date\": {\n    \"day\": \"<integer>\",\n    \"month\": \"<integer>\",\n    \"year\": \"<integer>\"\n  },\n  \"language\": \"<string>\",\n  \"default_channel_id\": \"<uuid>\",\n  \"properties\": {\n    \"key_0\": true\n  },\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"9c60df4a-8a1c-2e70-7dc8-b7c41b681cac\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"name\": \"string\",\n    \"external_id\": \"string\",\n    \"address\": {\n      \"address_line_one\": \"<string>\",\n      \"address_line_two\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postal_code\": \"<string>\"\n    },\n    \"birth_date\": {\n      \"day\": \"<integer>\",\n      \"month\": \"<integer>\",\n      \"year\": \"<integer>\"\n    },\n    \"state\": \"archived\",\n    \"blocked\": true,\n    \"communication_preferences\": [\n      {\n        \"channel_id\": \"5906b0ff-7567-d58c-8e2b-d8a3412de846\",\n        \"opt_in\": false,\n        \"updated_at\": \"2021-08-04T05:48:17.943Z\"\n      },\n      {\n        \"channel_id\": \"e659ce0f-3206-c966-cffb-2b215456da3c\",\n        \"opt_in\": true,\n        \"updated_at\": \"2012-02-06T13:09:40.905Z\"\n      }\n    ],\n    \"created_at\": \"2009-03-12T15:54:54.357Z\",\n    \"updated_at\": \"1978-07-08T22:23:24.658Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e4d3940-a147-45bc-8ba7-5ab9209ddfff",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"address\": {\n    \"address_line_one\": \"<string>\",\n    \"address_line_two\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"birth_date\": {\n    \"day\": \"<integer>\",\n    \"month\": \"<integer>\",\n    \"year\": \"<integer>\"\n  },\n  \"language\": \"<string>\",\n  \"default_channel_id\": \"<uuid>\",\n  \"properties\": {\n    \"key_0\": true\n  },\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "daaf1e45-cba4-4ef3-887d-74bb5d73be05",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"address\": {\n    \"address_line_one\": \"<string>\",\n    \"address_line_two\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"birth_date\": {\n    \"day\": \"<integer>\",\n    \"month\": \"<integer>\",\n    \"year\": \"<integer>\"\n  },\n  \"language\": \"<string>\",\n  \"default_channel_id\": \"<uuid>\",\n  \"properties\": {\n    \"key_0\": true\n  },\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b3a6be0-f152-45e3-9d67-80f4a35f6990",
+          "name": "Show a contact",
+          "request": {
+            "name": "Show a contact",
+            "description": {},
+            "url": {
+              "path": [
+                "contacts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ae70f71-916a-4fba-a901-baca2f7305ab",
+              "name": "A single contact",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"9c60df4a-8a1c-2e70-7dc8-b7c41b681cac\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"name\": \"string\",\n    \"external_id\": \"string\",\n    \"address\": {\n      \"address_line_one\": \"<string>\",\n      \"address_line_two\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postal_code\": \"<string>\"\n    },\n    \"birth_date\": {\n      \"day\": \"<integer>\",\n      \"month\": \"<integer>\",\n      \"year\": \"<integer>\"\n    },\n    \"state\": \"archived\",\n    \"blocked\": true,\n    \"communication_preferences\": [\n      {\n        \"channel_id\": \"5906b0ff-7567-d58c-8e2b-d8a3412de846\",\n        \"opt_in\": false,\n        \"updated_at\": \"2021-08-04T05:48:17.943Z\"\n      },\n      {\n        \"channel_id\": \"e659ce0f-3206-c966-cffb-2b215456da3c\",\n        \"opt_in\": true,\n        \"updated_at\": \"2012-02-06T13:09:40.905Z\"\n      }\n    ],\n    \"created_at\": \"2009-03-12T15:54:54.357Z\",\n    \"updated_at\": \"1978-07-08T22:23:24.658Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35b0ef77-7838-44f6-92a1-ad08df293d7e",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2436259-6ec2-489d-9273-6b708da958c9",
+          "name": "Update a contact",
+          "request": {
+            "name": "Update a contact",
+            "description": {},
+            "url": {
+              "path": [
+                "contacts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"address\": {\n    \"address_line_one\": \"<string>\",\n    \"address_line_two\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"birth_date\": {\n    \"day\": \"<integer>\",\n    \"month\": \"<integer>\",\n    \"year\": \"<integer>\"\n  },\n  \"language\": \"<string>\",\n  \"default_channel_id\": \"<uuid>\",\n  \"properties\": {\n    \"key_0\": 9324.648886817818,\n    \"key_1\": 4447.070978024764\n  },\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8cb7a2a-a869-4512-b5ac-33f7d8de68fd",
+              "name": "Contact updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"address\": {\n    \"address_line_one\": \"<string>\",\n    \"address_line_two\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"birth_date\": {\n    \"day\": \"<integer>\",\n    \"month\": \"<integer>\",\n    \"year\": \"<integer>\"\n  },\n  \"language\": \"<string>\",\n  \"default_channel_id\": \"<uuid>\",\n  \"properties\": {\n    \"key_0\": true\n  },\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"9c60df4a-8a1c-2e70-7dc8-b7c41b681cac\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"name\": \"string\",\n    \"external_id\": \"string\",\n    \"address\": {\n      \"address_line_one\": \"<string>\",\n      \"address_line_two\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postal_code\": \"<string>\"\n    },\n    \"birth_date\": {\n      \"day\": \"<integer>\",\n      \"month\": \"<integer>\",\n      \"year\": \"<integer>\"\n    },\n    \"state\": \"archived\",\n    \"blocked\": true,\n    \"communication_preferences\": [\n      {\n        \"channel_id\": \"5906b0ff-7567-d58c-8e2b-d8a3412de846\",\n        \"opt_in\": false,\n        \"updated_at\": \"2021-08-04T05:48:17.943Z\"\n      },\n      {\n        \"channel_id\": \"e659ce0f-3206-c966-cffb-2b215456da3c\",\n        \"opt_in\": true,\n        \"updated_at\": \"2012-02-06T13:09:40.905Z\"\n      }\n    ],\n    \"created_at\": \"2009-03-12T15:54:54.357Z\",\n    \"updated_at\": \"1978-07-08T22:23:24.658Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16ba9c26-1717-4fdc-9cfa-d5e31f8c8eeb",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"address\": {\n    \"address_line_one\": \"<string>\",\n    \"address_line_two\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"birth_date\": {\n    \"day\": \"<integer>\",\n    \"month\": \"<integer>\",\n    \"year\": \"<integer>\"\n  },\n  \"language\": \"<string>\",\n  \"default_channel_id\": \"<uuid>\",\n  \"properties\": {\n    \"key_0\": true\n  },\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd4d56ad-a7af-48d3-8a48-30d35bbb14f5",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"address\": {\n    \"address_line_one\": \"<string>\",\n    \"address_line_two\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"birth_date\": {\n    \"day\": \"<integer>\",\n    \"month\": \"<integer>\",\n    \"year\": \"<integer>\"\n  },\n  \"language\": \"<string>\",\n  \"default_channel_id\": \"<uuid>\",\n  \"properties\": {\n    \"key_0\": true\n  },\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edd7dcc8-f1ae-4d9d-990e-d7fa5307fdb8",
+          "name": "Delete a contact",
+          "request": {
+            "name": "Delete a contact",
+            "description": {},
+            "url": {
+              "path": [
+                "contacts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd8b7ed6-a6e6-4250-86fb-bccba94c0cb0",
+              "name": "Contact deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ed38d0cd-2436-469d-9317-7f3bed510631",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d262bf4a-fb5d-4569-a8e5-e49430734ce4",
+          "name": "Search contacts",
+          "request": {
+            "name": "Search contacts",
+            "description": {},
+            "url": {
+              "path": [
+                "contacts",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2ca7459f-a97b-4f35-bd58-47db99022df6",
+              "name": "Matching contacts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"837bbb29-4772-ab4a-7967-a51374791e55\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"name\": \"string\",\n      \"external_id\": \"string\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"state\": \"blocked\",\n      \"blocked\": false,\n      \"communication_preferences\": [\n        {\n          \"channel_id\": \"ec0046dc-d49c-81c6-561d-94a5c61f07ea\",\n          \"opt_in\": false,\n          \"updated_at\": \"1957-03-21T16:04:28.527Z\"\n        },\n        {\n          \"channel_id\": \"9860f5fb-43fb-b3e0-6319-4388528ffa77\",\n          \"opt_in\": false,\n          \"updated_at\": \"2002-05-30T06:45:20.405Z\"\n        }\n      ],\n      \"created_at\": \"2016-11-22T10:34:21.773Z\",\n      \"updated_at\": \"1993-12-24T05:12:51.943Z\"\n    },\n    {\n      \"id\": \"77fe7185-ed68-03c6-56ae-e80cf237fb1f\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"name\": \"string\",\n      \"external_id\": \"string\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"state\": \"open\",\n      \"blocked\": false,\n      \"communication_preferences\": [\n        {\n          \"channel_id\": \"5ced42ef-18e7-6247-724d-de3e08ea90d1\",\n          \"opt_in\": false,\n          \"updated_at\": \"2024-05-31T04:28:43.541Z\"\n        },\n        {\n          \"channel_id\": \"f53c838b-abe0-4ebf-0cd8-6865314d3bd2\",\n          \"opt_in\": false,\n          \"updated_at\": \"1971-04-27T08:13:38.254Z\"\n        }\n      ],\n      \"created_at\": \"1978-06-27T04:34:18.739Z\",\n      \"updated_at\": \"1949-02-19T11:43:52.878Z\"\n    }\n  ],\n  \"total\": 8152\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0216d204-ea5e-4e44-bb3a-6b7cbc1c0239",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07421174-4191-490e-9b78-fb70bba9151f",
+          "name": "Upsert contacts",
+          "request": {
+            "name": "Upsert contacts",
+            "description": {
+              "content": "Create or update contacts keyed on phone / email / external_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts",
+                "upsert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contacts\": [\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": \"string\"\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    },\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1659686e-4df3-43ac-855d-f88b0f1a951d",
+              "name": "Upsert accepted for processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    "upsert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contacts\": [\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": true,\n        \"key_1\": \"string\"\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    },\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": \"string\"\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b07ff04f-7413-4de0-a004-b33633882e92",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    "upsert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contacts\": [\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": true,\n        \"key_1\": \"string\"\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    },\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": \"string\"\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bc6c09a-3423-4cc8-879a-5f23cda1bc29",
+          "name": "List a contact's communication preferences",
+          "request": {
+            "name": "List a contact's communication preferences",
+            "description": {},
+            "url": {
+              "path": [
+                "contacts",
+                ":id",
+                "communication_preferences"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4f743f83-d11b-4558-b773-4f3c5327b7f1",
+              "name": "Communication preferences",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id",
+                    "communication_preferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"channel_id\": \"78764a6d-8f24-4be4-5747-c6cb9c98728b\",\n      \"opt_in\": false,\n      \"updated_at\": \"1995-06-29T00:58:43.700Z\"\n    },\n    {\n      \"channel_id\": \"caadc5f2-528f-baaf-8b87-fb10e406818d\",\n      \"opt_in\": true,\n      \"updated_at\": \"1993-01-30T11:33:32.015Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21eb7659-2e04-4205-96e5-dada327924e9",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id",
+                    "communication_preferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a7fd23e-ea73-495c-9338-a9f18e046945",
+          "name": "Opt a contact into a channel",
+          "request": {
+            "name": "Opt a contact into a channel",
+            "description": {},
+            "url": {
+              "path": [
+                "contacts",
+                ":id",
+                "communication_preferences",
+                "opt_in"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel_id\": \"<uuid>\",\n  \"phone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "757f27f0-c5b7-4784-b5a9-ff5647cef511",
+              "name": "Opted in",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id",
+                    "communication_preferences",
+                    "opt_in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel_id\": \"<uuid>\",\n  \"phone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a666c865-2bcf-400d-b934-657cace54845",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id",
+                    "communication_preferences",
+                    "opt_in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel_id\": \"<uuid>\",\n  \"phone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26453c6f-cd95-4f62-8c16-c1ca33aa3846",
+          "name": "Opt a contact out of a channel",
+          "request": {
+            "name": "Opt a contact out of a channel",
+            "description": {},
+            "url": {
+              "path": [
+                "contacts",
+                ":id",
+                "communication_preferences",
+                "opt_out"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel_id\": \"<uuid>\",\n  \"phone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06b39577-b3f0-467e-a52b-87048e6676b3",
+              "name": "Opted out",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id",
+                    "communication_preferences",
+                    "opt_out"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel_id\": \"<uuid>\",\n  \"phone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c89be6cc-2ead-4d00-9337-a53e957888fd",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id",
+                    "communication_preferences",
+                    "opt_out"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel_id\": \"<uuid>\",\n  \"phone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 5760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.whippy.co/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-WHIPPY-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "120655d2-fe8e-46af-94fe-98c7ff591a56",
+    "name": "Whippy Public Campaigns Contacts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.\n\nContact Support:\n Name: Whippy Support",
+      "type": "text/plain"
+    }
+  }
+}

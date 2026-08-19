@@ -1,0 +1,902 @@
+{
+  "item": [
+    {
+      "id": "087aefeb-af7c-4aac-a38e-7add4ec2a01a",
+      "name": "Conversations",
+      "description": {
+        "content": "List, search, and update conversations and their messages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3188e037-68d4-4a2d-9d3d-5d820b692347",
+          "name": "List conversations",
+          "request": {
+            "name": "List conversations",
+            "description": {},
+            "url": {
+              "path": [
+                "conversations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Number of results per page (default 50, max 500)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of results to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "status[]",
+                  "value": "<string>",
+                  "description": "Filter by conversation status."
+                },
+                {
+                  "disabled": false,
+                  "key": "status[]",
+                  "value": "<string>",
+                  "description": "Filter by conversation status."
+                },
+                {
+                  "disabled": false,
+                  "key": "type[]",
+                  "value": "<string>",
+                  "description": "Filter by conversation type."
+                },
+                {
+                  "disabled": false,
+                  "key": "type[]",
+                  "value": "<string>",
+                  "description": "Filter by conversation type."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fd5999c-4487-4682-9c5f-68be607195e8",
+              "name": "A page of conversations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"1147dc15-785a-ea95-7d95-ebc7b8c370c5\",\n      \"assigned_team_id\": \"c43d1daf-72ad-72ff-ca2e-c86610cdb0a3\",\n      \"assigned_user_id\": 5006,\n      \"channel_id\": \"f34ea941-8252-9ab8-3ac8-1c97259ca45b\",\n      \"channel_type\": \"fax\",\n      \"contact_id\": \"6dad7f71-4379-f464-9b2c-943b76f3018d\",\n      \"status\": \"open\",\n      \"unread_count\": 7614,\n      \"last_message_date\": \"2019-12-12T20:58:04.476Z\",\n      \"created_at\": \"1959-05-21T05:11:41.057Z\",\n      \"updated_at\": \"1994-09-24T03:19:56.716Z\"\n    },\n    {\n      \"id\": \"72598cb6-0f06-7988-0017-e61bba1b988d\",\n      \"assigned_team_id\": \"4ec399ec-b463-2ef1-c360-35e0602e47a9\",\n      \"assigned_user_id\": 5400,\n      \"channel_id\": \"7b99ac07-976a-563a-1fba-e943fce11f0f\",\n      \"channel_type\": \"fax\",\n      \"contact_id\": \"79077d82-31e4-395f-d6e3-442145541bb9\",\n      \"status\": \"automated\",\n      \"unread_count\": 4116,\n      \"last_message_date\": \"1978-03-15T05:22:38.996Z\",\n      \"created_at\": \"1991-03-18T17:26:33.003Z\",\n      \"updated_at\": \"1951-10-22T20:20:48.109Z\"\n    }\n  ],\n  \"total\": 5848\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42a1a9ff-c759-462f-a361-cc124f9ed8d1",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 4428\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fc27bc4-1dd8-4191-adae-8597b935c2bf",
+          "name": "Show a conversation",
+          "request": {
+            "name": "Show a conversation",
+            "description": {},
+            "url": {
+              "path": [
+                "conversations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a591591d-7551-42df-ac88-62e432039738",
+              "name": "A single conversation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"4859f781-20b7-bf0d-dbfd-0b0e2a715973\",\n    \"assigned_team_id\": \"d84dfc6c-5284-c10d-cb0d-6db1464389bf\",\n    \"assigned_user_id\": 6682,\n    \"channel_id\": \"3eb74e92-d79c-507a-e472-fee62b19073b\",\n    \"channel_type\": \"email\",\n    \"contact_id\": \"07528475-8ac5-cc47-ca6b-1bc3feb00dd5\",\n    \"status\": \"closed\",\n    \"unread_count\": 439,\n    \"last_message_date\": \"1954-01-30T21:48:47.864Z\",\n    \"created_at\": \"1973-11-16T10:55:56.164Z\",\n    \"updated_at\": \"2004-09-10T01:43:27.650Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb0686cf-fa4e-4c51-9c09-8c4dc5e2b8c0",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 4428\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f27fb52-ec52-4a00-8180-4ec881740c80",
+          "name": "Update a conversation",
+          "request": {
+            "name": "Update a conversation",
+            "description": {},
+            "url": {
+              "path": [
+                "conversations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"assigned_user_id\": \"<integer>\",\n  \"assigned_team_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4c4bc28d-61fa-46cc-aafa-c4b782ec0f06",
+              "name": "Conversation updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"assigned_user_id\": \"<integer>\",\n  \"assigned_team_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"4859f781-20b7-bf0d-dbfd-0b0e2a715973\",\n    \"assigned_team_id\": \"d84dfc6c-5284-c10d-cb0d-6db1464389bf\",\n    \"assigned_user_id\": 6682,\n    \"channel_id\": \"3eb74e92-d79c-507a-e472-fee62b19073b\",\n    \"channel_type\": \"email\",\n    \"contact_id\": \"07528475-8ac5-cc47-ca6b-1bc3feb00dd5\",\n    \"status\": \"closed\",\n    \"unread_count\": 439,\n    \"last_message_date\": \"1954-01-30T21:48:47.864Z\",\n    \"created_at\": \"1973-11-16T10:55:56.164Z\",\n    \"updated_at\": \"2004-09-10T01:43:27.650Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec7974b0-1da0-435f-ab04-14e2be334dbb",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"assigned_user_id\": \"<integer>\",\n  \"assigned_team_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 4428\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23474388-9f73-4a25-af97-6d86ea0d1c1e",
+          "name": "Search conversations",
+          "request": {
+            "name": "Search conversations",
+            "description": {},
+            "url": {
+              "path": [
+                "conversations",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3065924b-99c5-4d48-841e-44c7db7601b8",
+              "name": "Matching conversations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"31d597d2-7c6d-b09d-9c00-8b5e07ac7a4a\",\n      \"assigned_team_id\": \"7e8b0313-107c-4148-7d31-2a4bb4d5e957\",\n      \"assigned_user_id\": 5000,\n      \"channel_id\": \"2eab1456-b04a-40dd-98a1-e10f3848f6e7\",\n      \"channel_type\": \"phone\",\n      \"contact_id\": \"6bc5ca23-1209-d350-1064-74d05d02c5c1\",\n      \"status\": \"open\",\n      \"unread_count\": 664,\n      \"last_message_date\": \"1951-09-09T18:14:38.548Z\",\n      \"created_at\": \"1977-07-07T05:34:55.952Z\",\n      \"updated_at\": \"2019-04-19T00:33:16.996Z\"\n    },\n    {\n      \"id\": \"4e2f7d08-b8d1-d718-6af0-d94533d7ef2e\",\n      \"assigned_team_id\": \"c4fd6344-4786-d5a9-a430-749a9a759dd0\",\n      \"assigned_user_id\": 3665,\n      \"channel_id\": \"4bcf7e91-cd49-b1cb-7a0d-840c771083ae\",\n      \"channel_type\": \"phone\",\n      \"contact_id\": \"4f4e2367-de6a-0496-e312-094cea08ec1a\",\n      \"status\": \"closed\",\n      \"unread_count\": 3430,\n      \"last_message_date\": \"1990-06-05T23:06:45.042Z\",\n      \"created_at\": \"2010-08-28T09:51:18.246Z\",\n      \"updated_at\": \"1962-04-11T15:48:23.221Z\"\n    }\n  ],\n  \"total\": 9240\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d53fc97e-16e9-4094-bf86-5f132ca835ef",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 4428\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62191ca7-a989-4114-8d78-402f4346ea69",
+          "name": "List messages in a conversation",
+          "request": {
+            "name": "List messages in a conversation",
+            "description": {},
+            "url": {
+              "path": [
+                "conversations",
+                ":id",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Number of results per page (default 50, max 500)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of results to skip for pagination."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Resource UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3755f741-047e-4721-9d10-13ab1f878067",
+              "name": "A page of messages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"db2a5fc2-3af0-ac1d-c859-9132c61f1e61\",\n      \"conversation_id\": \"7268e76c-c230-c44f-9f94-cdb8723e6b65\",\n      \"body\": \"string\",\n      \"from\": \"string\",\n      \"to\": \"string\",\n      \"direction\": \"OUTBOUND\",\n      \"delivery_status\": \"string\",\n      \"attachments\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_at\": \"2010-03-30T12:40:42.364Z\"\n    },\n    {\n      \"id\": \"866b8a1a-7cdd-220f-b996-93bc9bf8ab3b\",\n      \"conversation_id\": \"b0b0e700-3e77-3403-790e-21bc8a022e0f\",\n      \"body\": \"string\",\n      \"from\": \"string\",\n      \"to\": \"string\",\n      \"direction\": \"INBOUND\",\n      \"delivery_status\": \"string\",\n      \"attachments\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_at\": \"1953-02-09T23:55:39.349Z\"\n    }\n  ],\n  \"total\": 2520\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b9b8256-7296-4484-9d34-d6cdd7f63134",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Resource UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 4428\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.whippy.co/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-WHIPPY-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "87e93ae8-a3e5-45ca-9639-7dafb270fa77",
+    "name": "Whippy Public Campaigns Conversations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.\n\nContact Support:\n Name: Whippy Support",
+      "type": "text/plain"
+    }
+  }
+}

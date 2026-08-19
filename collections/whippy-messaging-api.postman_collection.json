@@ -1,0 +1,873 @@
+{
+  "item": [
+    {
+      "id": "cc1a33a0-0f7d-40a2-84ae-48a9a31bec13",
+      "name": "Messaging",
+      "description": {
+        "content": "Send SMS / MMS, email, and fax messages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5b5e0568-b398-4cf9-9c5c-97577a13d698",
+          "name": "Send an SMS / MMS",
+          "request": {
+            "name": "Send an SMS / MMS",
+            "description": {
+              "content": "Send a text (or MMS, via attachments) message from an existing organization channel to a destination phone number. Either body or attachments must be provided.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "messaging",
+                "sms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\",\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"conversation_status\": \"<string>\",\n  \"schedule_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b62850e9-b888-4823-9626-9c53a785ad02",
+              "name": "Message queued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "sms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\",\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"conversation_status\": \"<string>\",\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"87856a64-135c-20b7-da9d-eb74c46a906e\",\n    \"contact_id\": \"b7335dad-cf1b-ba4c-0eb4-a0b7cc8b4f7c\",\n    \"conversation_id\": \"d380be76-de2b-3436-49a2-cb29821856e7\",\n    \"delivery_status\": \"queued\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9121d10e-9535-4f66-9847-51c2ce2ff1bc",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "sms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\",\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"conversation_status\": \"<string>\",\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 7562\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34a0ff8a-849d-4754-96dc-d5bf530610f5",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "sms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"opt_in_to_all_channels\": \"<boolean>\",\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"conversation_status\": \"<string>\",\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 7562\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7608efa4-c800-4209-9f36-4a81973e36df",
+          "name": "Send an email",
+          "request": {
+            "name": "Send an email",
+            "description": {
+              "content": "Send an email from an existing organization channel to a destination email address with optional subject, CC / BCC, reply-to, and attachments. Either body or attachments must be provided.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "messaging",
+                "email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"reply_to\": \"<string>\",\n  \"sender_name\": \"<string>\",\n  \"sender_email\": \"<string>\",\n  \"schedule_at\": \"<dateTime>\",\n  \"conversation_status\": \"open\",\n  \"opt_in_to_all_channels\": \"<boolean>\",\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "545501e1-57b4-475e-818b-b19906b3df35",
+              "name": "Email queued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"reply_to\": \"<string>\",\n  \"sender_name\": \"<string>\",\n  \"sender_email\": \"<string>\",\n  \"schedule_at\": \"<dateTime>\",\n  \"conversation_status\": \"open\",\n  \"opt_in_to_all_channels\": \"<boolean>\",\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"87856a64-135c-20b7-da9d-eb74c46a906e\",\n    \"contact_id\": \"b7335dad-cf1b-ba4c-0eb4-a0b7cc8b4f7c\",\n    \"conversation_id\": \"d380be76-de2b-3436-49a2-cb29821856e7\",\n    \"delivery_status\": \"queued\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d114fd1-d40d-440d-b662-6611611645b7",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"reply_to\": \"<string>\",\n  \"sender_name\": \"<string>\",\n  \"sender_email\": \"<string>\",\n  \"schedule_at\": \"<dateTime>\",\n  \"conversation_status\": \"open\",\n  \"opt_in_to_all_channels\": \"<boolean>\",\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 7562\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5761d50f-5375-4f9d-9f65-b861afcdd09f",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"reply_to\": \"<string>\",\n  \"sender_name\": \"<string>\",\n  \"sender_email\": \"<string>\",\n  \"schedule_at\": \"<dateTime>\",\n  \"conversation_status\": \"open\",\n  \"opt_in_to_all_channels\": \"<boolean>\",\n  \"opt_in_to\": [\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"phone\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 7562\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73e5ad99-8dd9-443c-a53f-1586e20725f2",
+          "name": "Send a fax",
+          "request": {
+            "name": "Send a fax",
+            "description": {
+              "content": "Send a fax from an existing fax channel to a destination number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "messaging",
+                "fax"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ca424bf-82d2-4259-a001-16268d0af045",
+              "name": "Fax queued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "fax"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"87856a64-135c-20b7-da9d-eb74c46a906e\",\n    \"contact_id\": \"b7335dad-cf1b-ba4c-0eb4-a0b7cc8b4f7c\",\n    \"conversation_id\": \"d380be76-de2b-3436-49a2-cb29821856e7\",\n    \"delivery_status\": \"queued\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d41cf514-8e77-468d-b036-a543337e6c35",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "fax"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 7562\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65ffd211-47b9-4db1-b6d4-b2d6e3e47126",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "fax"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 7562\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54665ac8-02d2-4bef-91c0-f43f42574e7a",
+          "name": "Send an SMS campaign",
+          "request": {
+            "name": "Send an SMS campaign",
+            "description": {
+              "content": "Create and send a bulk SMS campaign from a channel to a list of contacts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "messaging",
+                "sms",
+                "campaign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"contacts\": [\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    },\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": 6057.777141902719,\n        \"key_2\": \"string\"\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    }\n  ],\n  \"title\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "15d80250-d1ae-486f-93ea-4e4be173c036",
+              "name": "Campaign accepted for processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "sms",
+                    "campaign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"contacts\": [\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 5874,\n        \"key_1\": \"string\"\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    },\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 3670\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    }\n  ],\n  \"title\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ae750f8-60e7-4ad3-95fe-433567b4a762",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "sms",
+                    "campaign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"contacts\": [\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 5874,\n        \"key_1\": \"string\"\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    },\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 3670\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    }\n  ],\n  \"title\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 7562\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c9407f0-3b90-43c1-b722-0da7bd8386c3",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messaging",
+                    "sms",
+                    "campaign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-WHIPPY-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<string>\",\n  \"body\": \"<string>\",\n  \"contacts\": [\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 5874,\n        \"key_1\": \"string\"\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    },\n    {\n      \"phone\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"address\": {\n        \"address_line_one\": \"<string>\",\n        \"address_line_two\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"birth_date\": {\n        \"day\": \"<integer>\",\n        \"month\": \"<integer>\",\n        \"year\": \"<integer>\"\n      },\n      \"language\": \"<string>\",\n      \"default_channel_id\": \"<uuid>\",\n      \"properties\": {\n        \"key_0\": 3670\n      },\n      \"opt_in_to\": [\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"phone\": \"<string>\"\n        }\n      ],\n      \"opt_in_to_all_channels\": \"<boolean>\"\n    }\n  ],\n  \"title\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schedule_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 7562\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.whippy.co/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-WHIPPY-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a51492d4-b115-4f4c-9c49-6a8133938cc3",
+    "name": "Whippy Public Campaigns Messaging API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.\n\nContact Support:\n Name: Whippy Support",
+      "type": "text/plain"
+    }
+  }
+}
