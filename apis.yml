@@ -338,6 +338,8 @@ apis:
   - type: Review
     url: review.yml
 common:
+- type: Pricing
+  url: https://www.whippy.ai/pricing
 - type: CapabilityMap
   url: capabilities/whippy-capability-edges.yml
   name: Whippy Business Capability Map
