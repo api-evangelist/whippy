@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Whippy Public Campaigns Sequences API
+  title: Whippy Public Sequences API
   description: The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.
   termsOfService: https://www.whippy.ai/terms-of-service
   contact:
@@ -157,42 +157,17 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Sequence:
+    CommunicationPreference:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        title:
-          type: string
         channel_id:
           type: string
           format: uuid
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/SequenceStep'
-        created_at:
-          type: string
-          format: date-time
+        opt_in:
+          type: boolean
         updated_at:
           type: string
           format: date-time
-    Address:
-      type: object
-      properties:
-        address_line_one:
-          type: string
-        address_line_two:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        postal_code:
-          type: string
     CreateContactRequest:
       type: object
       required:
@@ -224,43 +199,21 @@ components:
             $ref: '#/components/schemas/OptInChannel'
         opt_in_to_all_channels:
           type: boolean
-    SequenceList:
+    Address:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Sequence'
-        total:
-          type: integer
-    ContactList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-        total:
-          type: integer
-    Error:
-      type: object
-      properties:
-        error:
+        address_line_one:
           type: string
-        status:
-          type: integer
-    SequenceStep:
-      type: object
-      properties:
-        id:
+        address_line_two:
           type: string
-          format: uuid
-        type:
+        city:
           type: string
-        body:
+        state:
           type: string
-        delay:
-          type: integer
+        country:
+          type: string
+        postal_code:
+          type: string
     AcceptedResponse:
       type: object
       properties:
@@ -269,6 +222,52 @@ components:
           properties:
             message:
               type: string
+    OptInChannel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        phone:
+          type: string
+    SequenceRun:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        sequence_id:
+          type: string
+          format: uuid
+        contact_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    Sequence:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        channel_id:
+          type: string
+          format: uuid
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/SequenceStep'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
     CreateSequenceContactsRequest:
       type: object
       required:
@@ -308,23 +307,15 @@ components:
             step_overrides:
               type: object
               additionalProperties: true
-    SequenceRun:
+    BirthDate:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        sequence_id:
-          type: string
-          format: uuid
-        contact_id:
-          type: string
-          format: uuid
-        status:
-          type: string
-        created_at:
-          type: string
-          format: date-time
+        day:
+          type: integer
+        month:
+          type: integer
+        year:
+          type: integer
     Contact:
       type: object
       properties:
@@ -361,34 +352,43 @@ components:
         updated_at:
           type: string
           format: date-time
-    BirthDate:
+    SequenceList:
       type: object
       properties:
-        day:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sequence'
+        total:
           type: integer
-        month:
-          type: integer
-        year:
-          type: integer
-    CommunicationPreference:
+    ContactList:
       type: object
       properties:
-        channel_id:
-          type: string
-          format: uuid
-        opt_in:
-          type: boolean
-        updated_at:
-          type: string
-          format: date-time
-    OptInChannel:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        total:
+          type: integer
+    SequenceStep:
       type: object
       properties:
         id:
           type: string
           format: uuid
-        phone:
+        type:
           type: string
+        body:
+          type: string
+        delay:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
   parameters:
     Offset:
       name: offset
@@ -397,14 +397,6 @@ components:
       schema:
         type: integer
         default: 0
-    PathId:
-      name: id
-      in: path
-      required: true
-      description: Resource UUID.
-      schema:
-        type: string
-        format: uuid
     Limit:
       name: limit
       in: query
@@ -413,15 +405,23 @@ components:
         type: integer
         default: 50
         maximum: 500
+    PathId:
+      name: id
+      in: path
+      required: true
+      description: Resource UUID.
+      schema:
+        type: string
+        format: uuid
   responses:
-    UnprocessableEntity:
-      description: Validation error
+    Unauthorized:
+      description: Not authenticated
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Not authenticated
+    UnprocessableEntity:
+      description: Validation error
       content:
         application/json:
           schema:

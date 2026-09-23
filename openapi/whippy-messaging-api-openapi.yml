@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Whippy Public Campaigns Messaging API
+  title: Whippy Public Messaging API
   description: The Whippy Public API is a RESTful API for the Whippy AI customer communication platform. It uses standard HTTP methods and JSON request / response bodies and is authenticated with an API key supplied in the X-WHIPPY-KEY header (OAuth bearer tokens are also supported). The API covers messaging (SMS / MMS, email, fax), contacts, conversations and messages, campaigns, automated sequences, channels, and webhook / custom events.
   termsOfService: https://www.whippy.ai/terms-of-service
   contact:
@@ -114,6 +114,33 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
 components:
   schemas:
+    BirthDate:
+      type: object
+      properties:
+        day:
+          type: integer
+        month:
+          type: integer
+        year:
+          type: integer
+    SendFaxRequest:
+      type: object
+      required:
+      - to
+      - from
+      - attachments
+      properties:
+        to:
+          type: string
+        from:
+          type: string
+        attachments:
+          type: array
+          items:
+            type: string
+        schedule_at:
+          type: string
+          format: date-time
     SendMessageResponse:
       type: object
       properties:
@@ -132,52 +159,31 @@ components:
             delivery_status:
               type: string
               example: queued
-    Address:
-      type: object
-      properties:
-        address_line_one:
-          type: string
-        address_line_two:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        postal_code:
-          type: string
-    CreateContactRequest:
+    SendCampaignRequest:
       type: object
       required:
-      - phone
+      - from
+      - body
+      - contacts
       properties:
-        phone:
+        from:
           type: string
-        name:
+          description: Phone of an existing channel.
+        title:
           type: string
-        email:
+        body:
           type: string
-        external_id:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        birth_date:
-          $ref: '#/components/schemas/BirthDate'
-        language:
-          type: string
-        default_channel_id:
-          type: string
-          format: uuid
-        properties:
-          type: object
-          additionalProperties: true
-        opt_in_to:
+        attachments:
           type: array
           items:
-            $ref: '#/components/schemas/OptInChannel'
-        opt_in_to_all_channels:
-          type: boolean
+            type: string
+        schedule_at:
+          type: string
+          format: date-time
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateContactRequest'
     SendEmailRequest:
       type: object
       required:
@@ -226,6 +232,52 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OptInChannel'
+    CreateContactRequest:
+      type: object
+      required:
+      - phone
+      properties:
+        phone:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        external_id:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        birth_date:
+          $ref: '#/components/schemas/BirthDate'
+        language:
+          type: string
+        default_channel_id:
+          type: string
+          format: uuid
+        properties:
+          type: object
+          additionalProperties: true
+        opt_in_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptInChannel'
+        opt_in_to_all_channels:
+          type: boolean
+    Address:
+      type: object
+      properties:
+        address_line_one:
+          type: string
+        address_line_two:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postal_code:
+          type: string
     OptInChannel:
       type: object
       properties:
@@ -234,47 +286,6 @@ components:
           format: uuid
         phone:
           type: string
-    SendCampaignRequest:
-      type: object
-      required:
-      - from
-      - body
-      - contacts
-      properties:
-        from:
-          type: string
-          description: Phone of an existing channel.
-        title:
-          type: string
-        body:
-          type: string
-        attachments:
-          type: array
-          items:
-            type: string
-        schedule_at:
-          type: string
-          format: date-time
-        contacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateContactRequest'
-    BirthDate:
-      type: object
-      properties:
-        day:
-          type: integer
-        month:
-          type: integer
-        year:
-          type: integer
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        status:
-          type: integer
     AcceptedResponse:
       type: object
       properties:
@@ -283,24 +294,13 @@ components:
           properties:
             message:
               type: string
-    SendFaxRequest:
+    Error:
       type: object
-      required:
-      - to
-      - from
-      - attachments
       properties:
-        to:
+        error:
           type: string
-        from:
-          type: string
-        attachments:
-          type: array
-          items:
-            type: string
-        schedule_at:
-          type: string
-          format: date-time
+        status:
+          type: integer
     SendSmsRequest:
       type: object
       required:
@@ -338,14 +338,14 @@ components:
           type: string
           format: date-time
   responses:
-    Unauthorized:
-      description: Not authenticated
+    UnprocessableEntity:
+      description: Validation error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
+    Unauthorized:
+      description: Not authenticated
       content:
         application/json:
           schema:
