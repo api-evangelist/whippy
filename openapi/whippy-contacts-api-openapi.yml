@@ -230,6 +230,32 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    CommunicationPreference:
+      type: object
+      properties:
+        channel_id:
+          type: string
+          format: uuid
+        opt_in:
+          type: boolean
+        updated_at:
+          type: string
+          format: date-time
+    Address:
+      type: object
+      properties:
+        address_line_one:
+          type: string
+        address_line_two:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postal_code:
+          type: string
     Contact:
       type: object
       properties:
@@ -266,22 +292,23 @@ components:
         updated_at:
           type: string
           format: date-time
-    CommunicationPreference:
-      type: object
-      properties:
-        channel_id:
-          type: string
-          format: uuid
-        opt_in:
-          type: boolean
-        updated_at:
-          type: string
-          format: date-time
-    ContactResponse:
+    ContactList:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/Contact'
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        total:
+          type: integer
+    OptInChannel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        phone:
+          type: string
     OptPreferenceRequest:
       type: object
       properties:
@@ -290,6 +317,35 @@ components:
           format: uuid
         phone:
           type: string
+    BirthDate:
+      type: object
+      properties:
+        day:
+          type: integer
+        month:
+          type: integer
+        year:
+          type: integer
+    AcceptedResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+    ContactResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Contact'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
     CreateContactRequest:
       type: object
       required:
@@ -321,62 +377,19 @@ components:
             $ref: '#/components/schemas/OptInChannel'
         opt_in_to_all_channels:
           type: boolean
-    Address:
-      type: object
-      properties:
-        address_line_one:
-          type: string
-        address_line_two:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        postal_code:
-          type: string
-    AcceptedResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            message:
-              type: string
-    OptInChannel:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        phone:
-          type: string
-    BirthDate:
-      type: object
-      properties:
-        day:
-          type: integer
-        month:
-          type: integer
-        year:
-          type: integer
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        status:
-          type: integer
-    ContactList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-        total:
-          type: integer
+  responses:
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     Limit:
       name: limit
@@ -401,19 +414,6 @@ components:
       schema:
         type: integer
         default: 0
-  responses:
-    Unauthorized:
-      description: Not authenticated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     WhippyApiKey:
       type: apiKey

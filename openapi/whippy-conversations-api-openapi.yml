@@ -214,6 +214,11 @@ components:
             $ref: '#/components/schemas/Conversation'
         total:
           type: integer
+    ConversationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Conversation'
     Message:
       type: object
       properties:
@@ -243,11 +248,6 @@ components:
         created_at:
           type: string
           format: date-time
-    ConversationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Conversation'
     Error:
       type: object
       properties:
