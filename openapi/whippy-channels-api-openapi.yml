@@ -75,6 +75,44 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
+    OpeningHour:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        weekday:
+          type: string
+          enum:
+          - Monday
+          - Tuesday
+          - Wednesday
+          - Thursday
+          - Friday
+          - Saturday
+          - Sunday
+        opens_at:
+          type: string
+        closes_at:
+          type: string
+        state:
+          type: string
     Channel:
       type: object
       properties:
@@ -115,44 +153,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        email:
-          type: string
-    OpeningHour:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        weekday:
-          type: string
-          enum:
-          - Monday
-          - Tuesday
-          - Wednesday
-          - Thursday
-          - Friday
-          - Saturday
-          - Sunday
-        opens_at:
-          type: string
-        closes_at:
-          type: string
-        state:
-          type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        status:
-          type: integer
     ChannelList:
       type: object
       properties:

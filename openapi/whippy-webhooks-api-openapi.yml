@@ -78,28 +78,13 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
 components:
   schemas:
-    CustomEventResponse:
+    Error:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-            event:
-              type: string
-            created_at:
-              type: string
-              format: date-time
-    AcceptedResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            message:
-              type: string
+        error:
+          type: string
+        status:
+          type: integer
     CustomEventRequest:
       type: object
       required:
@@ -131,22 +116,37 @@ components:
               id:
                 type: string
                 format: uuid
-    Error:
+    CustomEventResponse:
       type: object
       properties:
-        error:
-          type: string
-        status:
-          type: integer
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            event:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+    AcceptedResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            message:
+              type: string
   responses:
-    Unauthorized:
-      description: Not authenticated
+    UnprocessableEntity:
+      description: Validation error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
+    Unauthorized:
+      description: Not authenticated
       content:
         application/json:
           schema:
