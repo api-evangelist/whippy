@@ -113,104 +113,20 @@ paths:
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
 components:
+  responses:
+    Unauthorized:
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        status:
-          type: integer
-    CreateContactRequest:
-      type: object
-      required:
-      - phone
-      properties:
-        phone:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-        external_id:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        birth_date:
-          $ref: '#/components/schemas/BirthDate'
-        language:
-          type: string
-        default_channel_id:
-          type: string
-          format: uuid
-        properties:
-          type: object
-          additionalProperties: true
-        opt_in_to:
-          type: array
-          items:
-            $ref: '#/components/schemas/OptInChannel'
-        opt_in_to_all_channels:
-          type: boolean
-    Address:
-      type: object
-      properties:
-        address_line_one:
-          type: string
-        address_line_two:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        postal_code:
-          type: string
-    OptInChannel:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        phone:
-          type: string
-    SendSmsRequest:
-      type: object
-      required:
-      - to
-      - from
-      properties:
-        to:
-          type: string
-          description: Destination phone number.
-        from:
-          type: string
-          description: Phone of an existing channel belonging to your organization.
-        body:
-          type: string
-          description: Message content (max 1000 characters). Required if attachments is empty.
-          maxLength: 1000
-        attachments:
-          type: array
-          items:
-            type: string
-          description: List of attachment URLs.
-        opt_in_to_all_channels:
-          type: boolean
-        opt_in_to:
-          type: array
-          items:
-            $ref: '#/components/schemas/OptInChannel'
-        conversation_status:
-          type: string
-          enum:
-          - automated
-          - open
-          - closed
-        schedule_at:
-          type: string
-          format: date-time
     SendMessageResponse:
       type: object
       properties:
@@ -229,6 +145,21 @@ components:
             delivery_status:
               type: string
               example: queued
+    Address:
+      type: object
+      properties:
+        address_line_one:
+          type: string
+        address_line_two:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postal_code:
+          type: string
     BirthDate:
       type: object
       properties:
@@ -246,49 +177,6 @@ components:
           properties:
             message:
               type: string
-    SendCampaignRequest:
-      type: object
-      required:
-      - from
-      - body
-      - contacts
-      properties:
-        from:
-          type: string
-          description: Phone of an existing channel.
-        title:
-          type: string
-        body:
-          type: string
-        attachments:
-          type: array
-          items:
-            type: string
-        schedule_at:
-          type: string
-          format: date-time
-        contacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateContactRequest'
-    SendFaxRequest:
-      type: object
-      required:
-      - to
-      - from
-      - attachments
-      properties:
-        to:
-          type: string
-        from:
-          type: string
-        attachments:
-          type: array
-          items:
-            type: string
-        schedule_at:
-          type: string
-          format: date-time
     SendEmailRequest:
       type: object
       required:
@@ -337,19 +225,131 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OptInChannel'
-  responses:
-    UnprocessableEntity:
-      description: Validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Not authenticated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    OptInChannel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        phone:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
+    CreateContactRequest:
+      type: object
+      required:
+      - phone
+      properties:
+        phone:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        external_id:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        birth_date:
+          $ref: '#/components/schemas/BirthDate'
+        language:
+          type: string
+        default_channel_id:
+          type: string
+          format: uuid
+        properties:
+          type: object
+          additionalProperties: true
+        opt_in_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptInChannel'
+        opt_in_to_all_channels:
+          type: boolean
+    SendSmsRequest:
+      type: object
+      required:
+      - to
+      - from
+      properties:
+        to:
+          type: string
+          description: Destination phone number.
+        from:
+          type: string
+          description: Phone of an existing channel belonging to your organization.
+        body:
+          type: string
+          description: Message content (max 1000 characters). Required if attachments is empty.
+          maxLength: 1000
+        attachments:
+          type: array
+          items:
+            type: string
+          description: List of attachment URLs.
+        opt_in_to_all_channels:
+          type: boolean
+        opt_in_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptInChannel'
+        conversation_status:
+          type: string
+          enum:
+          - automated
+          - open
+          - closed
+        schedule_at:
+          type: string
+          format: date-time
+    SendFaxRequest:
+      type: object
+      required:
+      - to
+      - from
+      - attachments
+      properties:
+        to:
+          type: string
+        from:
+          type: string
+        attachments:
+          type: array
+          items:
+            type: string
+        schedule_at:
+          type: string
+          format: date-time
+    SendCampaignRequest:
+      type: object
+      required:
+      - from
+      - body
+      - contacts
+      properties:
+        from:
+          type: string
+          description: Phone of an existing channel.
+        title:
+          type: string
+        body:
+          type: string
+        attachments:
+          type: array
+          items:
+            type: string
+        schedule_at:
+          type: string
+          format: date-time
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateContactRequest'
   securitySchemes:
     WhippyApiKey:
       type: apiKey

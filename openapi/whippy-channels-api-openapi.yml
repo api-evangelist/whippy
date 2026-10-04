@@ -74,45 +74,33 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    PathId:
+      name: id
+      in: path
+      required: true
+      description: Resource UUID.
+      schema:
+        type: string
+        format: uuid
   schemas:
-    User:
+    ChannelList:
       type: object
       properties:
-        id:
-          type: integer
-        name:
-          type: string
-        email:
-          type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        status:
-          type: integer
-    OpeningHour:
-      type: object
-      properties:
-        id:
+        organization_id:
           type: string
           format: uuid
-        weekday:
-          type: string
-          enum:
-          - Monday
-          - Tuesday
-          - Wednesday
-          - Thursday
-          - Friday
-          - Saturday
-          - Sunday
-        opens_at:
-          type: string
-        closes_at:
-          type: string
-        state:
-          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
     Channel:
       type: object
       properties:
@@ -153,32 +141,44 @@ components:
         updated_at:
           type: string
           format: date-time
-    ChannelList:
+    OpeningHour:
       type: object
       properties:
-        organization_id:
+        id:
           type: string
           format: uuid
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Channel'
-  parameters:
-    PathId:
-      name: id
-      in: path
-      required: true
-      description: Resource UUID.
-      schema:
-        type: string
-        format: uuid
-  responses:
-    Unauthorized:
-      description: Not authenticated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+        weekday:
+          type: string
+          enum:
+          - Monday
+          - Tuesday
+          - Wednesday
+          - Thursday
+          - Friday
+          - Saturday
+          - Sunday
+        opens_at:
+          type: string
+        closes_at:
+          type: string
+        state:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
   securitySchemes:
     WhippyApiKey:
       type: apiKey

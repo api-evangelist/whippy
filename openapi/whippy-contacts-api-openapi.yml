@@ -230,10 +230,59 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    OptPreferenceRequest:
+    ContactResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Contact'
+    ContactList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        total:
+          type: integer
+    Address:
+      type: object
+      properties:
+        address_line_one:
+          type: string
+        address_line_two:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postal_code:
+          type: string
+    BirthDate:
+      type: object
+      properties:
+        day:
+          type: integer
+        month:
+          type: integer
+        year:
+          type: integer
+    CommunicationPreference:
       type: object
       properties:
         channel_id:
+          type: string
+          format: uuid
+        opt_in:
+          type: boolean
+        updated_at:
+          type: string
+          format: date-time
+    OptInChannel:
+      type: object
+      properties:
+        id:
           type: string
           format: uuid
         phone:
@@ -281,15 +330,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    ContactList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-        total:
-          type: integer
     CreateContactRequest:
       type: object
       required:
@@ -321,54 +361,6 @@ components:
             $ref: '#/components/schemas/OptInChannel'
         opt_in_to_all_channels:
           type: boolean
-    Address:
-      type: object
-      properties:
-        address_line_one:
-          type: string
-        address_line_two:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        postal_code:
-          type: string
-    OptInChannel:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        phone:
-          type: string
-    ContactResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Contact'
-    BirthDate:
-      type: object
-      properties:
-        day:
-          type: integer
-        month:
-          type: integer
-        year:
-          type: integer
-    CommunicationPreference:
-      type: object
-      properties:
-        channel_id:
-          type: string
-          format: uuid
-        opt_in:
-          type: boolean
-        updated_at:
-          type: string
-          format: date-time
     AcceptedResponse:
       type: object
       properties:
@@ -377,19 +369,14 @@ components:
           properties:
             message:
               type: string
-  responses:
-    UnprocessableEntity:
-      description: Validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Not authenticated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    OptPreferenceRequest:
+      type: object
+      properties:
+        channel_id:
+          type: string
+          format: uuid
+        phone:
+          type: string
   parameters:
     Offset:
       name: offset
@@ -414,6 +401,19 @@ components:
         type: integer
         default: 50
         maximum: 500
+  responses:
+    Unauthorized:
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     WhippyApiKey:
       type: apiKey

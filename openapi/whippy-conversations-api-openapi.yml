@@ -164,13 +164,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        status:
-          type: integer
     Conversation:
       type: object
       properties:
@@ -212,6 +205,27 @@ components:
         updated_at:
           type: string
           format: date-time
+    ConversationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Conversation'
+    ConversationList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Conversation'
+        total:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
     Message:
       type: object
       properties:
@@ -241,20 +255,6 @@ components:
         created_at:
           type: string
           format: date-time
-    ConversationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Conversation'
-    ConversationList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Conversation'
-        total:
-          type: integer
   parameters:
     Offset:
       name: offset

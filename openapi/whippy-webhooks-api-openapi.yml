@@ -77,7 +77,42 @@ paths:
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
 components:
+  responses:
+    Unauthorized:
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    AcceptedResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+    CustomEventResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            event:
+              type: string
+            created_at:
+              type: string
+              format: date-time
     Error:
       type: object
       properties:
@@ -116,41 +151,6 @@ components:
               id:
                 type: string
                 format: uuid
-    CustomEventResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-            event:
-              type: string
-            created_at:
-              type: string
-              format: date-time
-    AcceptedResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            message:
-              type: string
-  responses:
-    UnprocessableEntity:
-      description: Validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Not authenticated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     WhippyApiKey:
       type: apiKey
