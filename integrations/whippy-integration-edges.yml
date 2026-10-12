@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/whippy/integrations
+- https://n8n.io/integrations/whippy/
+- https://composio.dev/toolkits/whippy
+- https://monid.ai/tools/whippy
+checked:
+- https://composio.dev/toolkits/whippy
+- https://monid.ai/tools/whippy
+- https://n8n.io/integrations/whippy/
+- https://zapier.com/apps/whippy/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
