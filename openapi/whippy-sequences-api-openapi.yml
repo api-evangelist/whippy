@@ -157,6 +157,26 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    SequenceStep:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+        body:
+          type: string
+        delay:
+          type: integer
+    AcceptedResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            message:
+              type: string
     BirthDate:
       type: object
       properties:
@@ -166,6 +186,51 @@ components:
           type: integer
         year:
           type: integer
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        phone:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        external_id:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        birth_date:
+          $ref: '#/components/schemas/BirthDate'
+        state:
+          type: string
+          enum:
+          - open
+          - archived
+          - blocked
+        blocked:
+          type: boolean
+        communication_preferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommunicationPreference'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    ContactList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        total:
+          type: integer
     SequenceList:
       type: object
       properties:
@@ -174,6 +239,76 @@ components:
           items:
             $ref: '#/components/schemas/Sequence'
         total:
+          type: integer
+    CommunicationPreference:
+      type: object
+      properties:
+        channel_id:
+          type: string
+          format: uuid
+        opt_in:
+          type: boolean
+        updated_at:
+          type: string
+          format: date-time
+    Sequence:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        channel_id:
+          type: string
+          format: uuid
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/SequenceStep'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    CreateContactRequest:
+      type: object
+      required:
+      - phone
+      properties:
+        phone:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        external_id:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        birth_date:
+          $ref: '#/components/schemas/BirthDate'
+        language:
+          type: string
+        default_channel_id:
+          type: string
+          format: uuid
+        properties:
+          type: object
+          additionalProperties: true
+        opt_in_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptInChannel'
+        opt_in_to_all_channels:
+          type: boolean
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
           type: integer
     CreateSequenceContactsRequest:
       type: object
@@ -214,29 +349,6 @@ components:
             step_overrides:
               type: object
               additionalProperties: true
-    OptInChannel:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        phone:
-          type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        status:
-          type: integer
-    AcceptedResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            message:
-              type: string
     Address:
       type: object
       properties:
@@ -252,48 +364,14 @@ components:
           type: string
         postal_code:
           type: string
-    CommunicationPreference:
+    OptInChannel:
       type: object
       properties:
-        channel_id:
+        id:
           type: string
           format: uuid
-        opt_in:
-          type: boolean
-        updated_at:
-          type: string
-          format: date-time
-    CreateContactRequest:
-      type: object
-      required:
-      - phone
-      properties:
         phone:
           type: string
-        name:
-          type: string
-        email:
-          type: string
-        external_id:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        birth_date:
-          $ref: '#/components/schemas/BirthDate'
-        language:
-          type: string
-        default_channel_id:
-          type: string
-          format: uuid
-        properties:
-          type: object
-          additionalProperties: true
-        opt_in_to:
-          type: array
-          items:
-            $ref: '#/components/schemas/OptInChannel'
-        opt_in_to_all_channels:
-          type: boolean
     SequenceRun:
       type: object
       properties:
@@ -311,100 +389,7 @@ components:
         created_at:
           type: string
           format: date-time
-    ContactList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-        total:
-          type: integer
-    Sequence:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        title:
-          type: string
-        channel_id:
-          type: string
-          format: uuid
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/SequenceStep'
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-    SequenceStep:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        type:
-          type: string
-        body:
-          type: string
-        delay:
-          type: integer
-    Contact:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        phone:
-          type: string
-        email:
-          type: string
-        name:
-          type: string
-        external_id:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        birth_date:
-          $ref: '#/components/schemas/BirthDate'
-        state:
-          type: string
-          enum:
-          - open
-          - archived
-          - blocked
-        blocked:
-          type: boolean
-        communication_preferences:
-          type: array
-          items:
-            $ref: '#/components/schemas/CommunicationPreference'
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
   parameters:
-    PathId:
-      name: id
-      in: path
-      required: true
-      description: Resource UUID.
-      schema:
-        type: string
-        format: uuid
-    Offset:
-      name: offset
-      in: query
-      description: Number of results to skip for pagination.
-      schema:
-        type: integer
-        default: 0
     Limit:
       name: limit
       in: query
@@ -413,15 +398,30 @@ components:
         type: integer
         default: 50
         maximum: 500
+    Offset:
+      name: offset
+      in: query
+      description: Number of results to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    PathId:
+      name: id
+      in: path
+      required: true
+      description: Resource UUID.
+      schema:
+        type: string
+        format: uuid
   responses:
-    Unauthorized:
-      description: Not authenticated
+    UnprocessableEntity:
+      description: Validation error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
+    Unauthorized:
+      description: Not authenticated
       content:
         application/json:
           schema:

@@ -74,13 +74,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Not authenticated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     PathId:
       name: id
@@ -91,6 +84,13 @@ components:
         type: string
         format: uuid
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
     ChannelList:
       type: object
       properties:
@@ -101,6 +101,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Channel'
+    OpeningHour:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        weekday:
+          type: string
+          enum:
+          - Monday
+          - Tuesday
+          - Wednesday
+          - Thursday
+          - Friday
+          - Saturday
+          - Sunday
+        opens_at:
+          type: string
+        closes_at:
+          type: string
+        state:
+          type: string
     Channel:
       type: object
       properties:
@@ -141,35 +163,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    OpeningHour:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        weekday:
-          type: string
-          enum:
-          - Monday
-          - Tuesday
-          - Wednesday
-          - Thursday
-          - Friday
-          - Saturday
-          - Sunday
-        opens_at:
-          type: string
-        closes_at:
-          type: string
-        state:
-          type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        status:
-          type: integer
     User:
       type: object
       properties:
@@ -179,6 +172,13 @@ components:
           type: string
         email:
           type: string
+  responses:
+    Unauthorized:
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     WhippyApiKey:
       type: apiKey

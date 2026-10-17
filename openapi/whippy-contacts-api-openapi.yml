@@ -230,20 +230,71 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ContactResponse:
+    CreateContactRequest:
       type: object
+      required:
+      - phone
       properties:
-        data:
-          $ref: '#/components/schemas/Contact'
-    ContactList:
-      type: object
-      properties:
-        data:
+        phone:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        external_id:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        birth_date:
+          $ref: '#/components/schemas/BirthDate'
+        language:
+          type: string
+        default_channel_id:
+          type: string
+          format: uuid
+        properties:
+          type: object
+          additionalProperties: true
+        opt_in_to:
           type: array
           items:
-            $ref: '#/components/schemas/Contact'
-        total:
+            $ref: '#/components/schemas/OptInChannel'
+        opt_in_to_all_channels:
+          type: boolean
+    CommunicationPreference:
+      type: object
+      properties:
+        channel_id:
+          type: string
+          format: uuid
+        opt_in:
+          type: boolean
+        updated_at:
+          type: string
+          format: date-time
+    AcceptedResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
           type: integer
+    OptPreferenceRequest:
+      type: object
+      properties:
+        channel_id:
+          type: string
+          format: uuid
+        phone:
+          type: string
     Address:
       type: object
       properties:
@@ -259,26 +310,6 @@ components:
           type: string
         postal_code:
           type: string
-    BirthDate:
-      type: object
-      properties:
-        day:
-          type: integer
-        month:
-          type: integer
-        year:
-          type: integer
-    CommunicationPreference:
-      type: object
-      properties:
-        channel_id:
-          type: string
-          format: uuid
-        opt_in:
-          type: boolean
-        updated_at:
-          type: string
-          format: date-time
     OptInChannel:
       type: object
       properties:
@@ -287,13 +318,11 @@ components:
           format: uuid
         phone:
           type: string
-    Error:
+    ContactResponse:
       type: object
       properties:
-        error:
-          type: string
-        status:
-          type: integer
+        data:
+          $ref: '#/components/schemas/Contact'
     Contact:
       type: object
       properties:
@@ -330,54 +359,33 @@ components:
         updated_at:
           type: string
           format: date-time
-    CreateContactRequest:
+    BirthDate:
       type: object
-      required:
-      - phone
       properties:
-        phone:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-        external_id:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        birth_date:
-          $ref: '#/components/schemas/BirthDate'
-        language:
-          type: string
-        default_channel_id:
-          type: string
-          format: uuid
-        properties:
-          type: object
-          additionalProperties: true
-        opt_in_to:
-          type: array
-          items:
-            $ref: '#/components/schemas/OptInChannel'
-        opt_in_to_all_channels:
-          type: boolean
-    AcceptedResponse:
+        day:
+          type: integer
+        month:
+          type: integer
+        year:
+          type: integer
+    ContactList:
       type: object
       properties:
         data:
-          type: object
-          properties:
-            message:
-              type: string
-    OptPreferenceRequest:
-      type: object
-      properties:
-        channel_id:
-          type: string
-          format: uuid
-        phone:
-          type: string
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        total:
+          type: integer
   parameters:
+    Limit:
+      name: limit
+      in: query
+      description: Number of results per page (default 50, max 500).
+      schema:
+        type: integer
+        default: 50
+        maximum: 500
     Offset:
       name: offset
       in: query
@@ -393,23 +401,15 @@ components:
       schema:
         type: string
         format: uuid
-    Limit:
-      name: limit
-      in: query
-      description: Number of results per page (default 50, max 500).
-      schema:
-        type: integer
-        default: 50
-        maximum: 500
   responses:
-    Unauthorized:
-      description: Not authenticated
+    UnprocessableEntity:
+      description: Validation error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
+    Unauthorized:
+      description: Not authenticated
       content:
         application/json:
           schema:
