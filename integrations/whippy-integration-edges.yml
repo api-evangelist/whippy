@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/whippy/integrations
 - https://n8n.io/integrations/whippy/
@@ -10,7 +10,25 @@ checked:
 - https://monid.ai/tools/whippy
 - https://n8n.io/integrations/whippy/
 - https://zapier.com/apps/whippy/integrations
+- airtable/integrations/airtable-integration-edges.yml
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: Airtable (own)
+  partner: airtable
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://airtable.com/marketplace/blkvsUTFN9QtWcOvm/whippy-ai
+  mirror_of: airtable/integrations/airtable-integration-edges.yml
+  apps:
+  - Whippy AI
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Airtable extension
 templates: []
