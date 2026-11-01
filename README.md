@@ -1,4 +1,4 @@
-# Whippy (whippy)
+# Whippy
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,185 +66,137 @@
 
 Whippy is an AI-powered customer communication platform unifying SMS, email, voice, and fax into a single omnichannel inbox. Its public REST API (X-WHIPPY-KEY header) lets developers send messages, manage contacts and conversations, run campaigns and automated sequences, configure channels, and subscribe to webhooks.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/whippy/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/whippy/refs/heads/main/apis.yml)
+**Areas:** Communications · Messaging · SMS · Email · Voice · Artificial Intelligence · Campaigns · Sequences
 
-## Tags
+## Whippy on APIs.io
 
-- Communication
-- Messaging
-- SMS
-- Email
-- Voice
-- AI
-- Campaigns
-- Sequences
+Everything profiled for Whippy is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/whippy/](https://apis.io/providers/whippy/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-06-20
-- **Modified:** 2026-06-20
+- [Whippy Campaigns API](https://apis.io/apis/whippy/whippy-campaigns-api/) — Send campaigns and inspect campaign analytics.
+- [Whippy Channels API](https://apis.io/apis/whippy/whippy-channels-api/) — List and inspect channels and channel membership.
+- [Whippy Contacts API](https://apis.io/apis/whippy/whippy-contacts-api/) — Manage contacts and communication preferences.
+- [Whippy Conversations API](https://apis.io/apis/whippy/whippy-conversations-api/) — List, search, and update conversations and their messages.
+- [Whippy Messaging API](https://apis.io/apis/whippy/whippy-messaging-api/) — Send SMS / MMS, email, and fax messages.
+- [Whippy Sequences API](https://apis.io/apis/whippy/whippy-sequences-api/) — Manage automated multi-step sequences and their contacts.
+- [Whippy Webhooks API](https://apis.io/apis/whippy/whippy-webhooks-api/) — Push first-party custom events into Whippy.
 
-## APIs
+### Published properties
 
-### Whippy Messaging API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Send SMS/MMS, email, and fax messages from an organization channel to a contact, with attachments, opt-in handling, conversation status, and scheduled delivery.
+#### MCP servers (1)
 
-- **Human URL:** [https://docs.whippy.ai/reference/sendsms](https://docs.whippy.ai/reference/sendsms)
-- **Base URL:** `https://api.whippy.co/v1`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [whippy](https://apis.io/servers/whippy/whippy/)
 
-- Messaging
-- SMS
-- Email
-- Fax
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://docs.whippy.ai/docs/getting-started)
-- [API Reference](https://docs.whippy.ai/reference/sendsms)
-- [OpenAPI](openapi/whippy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/whippy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/whippy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Whippy Agentic Access](https://apis.io/agentic-access/whippy/whippy-agentic-access/)
 
-### Whippy Contacts API
+#### Collections (8)
 
-Create, read, update, delete, search, and upsert contacts, manage per-channel communication preferences (opt in / opt out), and list a contact's sequences.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://docs.whippy.ai/reference/createcontact-1](https://docs.whippy.ai/reference/createcontact-1)
-- **Base URL:** `https://api.whippy.co/v1`
+- [Whippy Public API](https://apis.io/collections/whippy/open-whippy/)
+- [Whippy Public Campaigns API](https://apis.io/collections/whippy/open-whippy-campaigns-api/)
+- [Whippy Public Campaigns Channels API](https://apis.io/collections/whippy/open-whippy-channels-api/)
+- [Whippy Public Campaigns Contacts API](https://apis.io/collections/whippy/open-whippy-contacts-api/)
+- [Whippy Public Campaigns Conversations API](https://apis.io/collections/whippy/open-whippy-conversations-api/)
+- [Whippy Public Campaigns Messaging API](https://apis.io/collections/whippy/open-whippy-messaging-api/)
+- [Whippy Public Campaigns Sequences API](https://apis.io/collections/whippy/open-whippy-sequences-api/)
+- [Whippy Public Campaigns Webhooks API](https://apis.io/collections/whippy/open-whippy-webhooks-api/)
 
-#### Tags
+#### Security (2)
 
-- Contacts
-- CRM
-- Communication Preferences
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Whippy Authentication](https://apis.io/security/whippy/whippy-authentication/)
+- [Whippy Domain Security](https://apis.io/security/whippy/whippy-domain-security/)
 
-- [Documentation](https://docs.whippy.ai/recipes/create-a-contact)
-- [API Reference](https://docs.whippy.ai/reference/createcontact-1)
-- [OpenAPI](openapi/whippy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/whippy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/whippy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (2)
 
-### Whippy Conversations API
+Published plans, tiers and prices.
 
-List, show, search, and update conversations across phone, email, and fax channels, and list or search the messages within them.
+- [Whippy Plans Pricing](https://apis.io/plans/whippy/whippy-plans-pricing/)
+- [Whippy Price Estimates](https://apis.io/plans/whippy/whippy-price-estimates/)
 
-- **Human URL:** [https://docs.whippy.ai/reference/getconversations](https://docs.whippy.ai/reference/getconversations)
-- **Base URL:** `https://api.whippy.co/v1`
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- Conversations
-- Messages
-- Inbox
+- [Whippy Rate Limits](https://apis.io/rate-limits/whippy/whippy-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://docs.whippy.ai/recipes/sync-conversations-messages)
-- [API Reference](https://docs.whippy.ai/reference/getconversations)
-- [OpenAPI](openapi/whippy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/whippy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/whippy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+What the API costs to run, by operation.
 
-### Whippy Campaigns API
+- [Whippy Finops](https://apis.io/finops/whippy/whippy-finops/)
 
-Send SMS campaigns and list, show, and inspect campaign-level analytics (sent, responses, link clicks, unsubscribes) and campaign contacts.
+## Where to find this API
 
-- **Human URL:** [https://docs.whippy.ai/reference/getcampaigns](https://docs.whippy.ai/reference/getcampaigns)
-- **Base URL:** `https://api.whippy.co/v1`
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Tags
-
-- Campaigns
-- Bulk Messaging
-- Analytics
-
-#### Properties
-
-- [Documentation](https://docs.whippy.ai/recipes/send-an-sms-campaign)
-- [API Reference](https://docs.whippy.ai/reference/getcampaigns)
-- [OpenAPI](openapi/whippy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/whippy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/whippy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Whippy Sequences API
-
-List and show automated multi-step sequences, add or remove contacts, and inspect sequence runs for drip and follow-up automation.
-
-- **Human URL:** [https://docs.whippy.ai/reference/getsequences](https://docs.whippy.ai/reference/getsequences)
-- **Base URL:** `https://api.whippy.co/v1`
-
-#### Tags
-
-- Sequences
-- Automation
-- Drip
-
-#### Properties
-
-- [Documentation](https://docs.whippy.ai/recipes/add-contacts-to-a-sequence)
-- [API Reference](https://docs.whippy.ai/reference/getsequences)
-- [OpenAPI](openapi/whippy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/whippy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/whippy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Whippy Channels API
-
-List and show channels (phone, email, fax) with opening hours, AI-agent configuration, and automatic response settings, and manage channel membership.
-
-- **Human URL:** [https://docs.whippy.ai/reference/getchannels](https://docs.whippy.ai/reference/getchannels)
-- **Base URL:** `https://api.whippy.co/v1`
-
-#### Tags
-
-- Channels
-- Phone Numbers
-- Locations
-
-#### Properties
-
-- [Documentation](https://docs.whippy.ai/docs/getting-started)
-- [API Reference](https://docs.whippy.ai/reference/getchannels)
-- [OpenAPI](openapi/whippy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/whippy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/whippy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Whippy Webhooks API
-
-Subscribe developer endpoints to resource events (message.created, campaign.updated, etc.) with HMAC-SHA256 signed payloads, and push first-party custom events into Whippy individually or in bulk.
-
-- **Human URL:** [https://docs.whippy.ai/docs/introduction](https://docs.whippy.ai/docs/introduction)
-- **Base URL:** `https://api.whippy.co/v1`
-
-#### Tags
-
-- Webhooks
-- Events
-- Custom Events
-
-#### Properties
-
-- [Documentation](https://docs.whippy.ai/docs/introduction)
-- [API Reference](https://docs.whippy.ai/reference/createcustomevent)
-- [OpenAPI](openapi/whippy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Review](review.yml)
-- [Postman Collection](collections/whippy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/whippy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/whippy-ai)
 - [Website](https://www.whippy.ai)
 - [Documentation](https://docs.whippy.ai)
-- [Plans](plans/whippy-plans-pricing.yml)
-- [Rate Limits](rate-limits/whippy-rate-limits.yml)
-- [Fin Ops](finops/whippy-finops.yml)
+- [Pricing](https://www.whippy.ai/pricing)
+- [Blog](https://www.whippy.ai/blog)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 39.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 49.8 |
+| Contract governance | 0.0 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 27.4 |
+| Access clarity | 42.1 |
+
+**Agent readiness 24.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 9.4** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/whippy/](https://apis.io/providers/whippy/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Whippy: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/whippy/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
